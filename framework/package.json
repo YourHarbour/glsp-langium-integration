@@ -8,6 +8,11 @@
   },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "exports": {
+    "./common": "./lib/common/index.js",
+    "./glsp": "./lib/glsp/index.js",
+    "./langium": "./lib/langium/index.js"
+  },
   "files": [
     "lib",
     "src",
