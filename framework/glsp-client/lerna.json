@@ -1,9 +1,0 @@
-{
-  "version": "2.2.1",
-  "npmClient": "yarn",
-  "command": {
-    "run": {
-      "stream": true
-    }
-  }
-}
