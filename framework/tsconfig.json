@@ -1,0 +1,21 @@
+{
+  "extends": "@eclipse-glsp/ts-config/tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "jsx": "react",
+    "reactNamespace": "JSX",
+    "skipLibCheck": true,
+    "composite": true,
+    // "types": ["react", "react-dom"] 
+    "module": "NodeNext",               
+    "moduleResolution": "NodeNext",     
+    
+    "esModuleInterop": true,            
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2022",                  
+    "resolveJsonModule": true,
+    "lib": ["WebWorker", "ESNext", "DOM"],
+  },
+  "include": ["src", "src/**/*.json", "types.d.ts"]
+}
