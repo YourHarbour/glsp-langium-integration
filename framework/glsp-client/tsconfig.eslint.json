@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@eclipse-glsp/ts-config/tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "jsx":"react",
+    "reactNamespace": "JSX",
+  },
+  "exclude": ["**/node_modules", "**/.eslintrc.js"],
+  "include": ["tasklist-glsp/src", "tasklist-theia/src"]
+}

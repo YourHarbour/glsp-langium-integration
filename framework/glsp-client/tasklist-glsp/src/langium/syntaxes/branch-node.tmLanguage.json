@@ -1,0 +1,47 @@
+{
+  "name": "branch-node",
+  "scopeName": "source.branch-node",
+  "fileTypes": [
+    ".branch_node"
+  ],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "name": "keyword.control.branch-node",
+      "match": "\\b(Immunocompromised|Negative|No|Positive|Yes|gives|is|patient's|test|the)\\b"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.branch-node",
+          "begin": "/\\*",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.branch-node"
+            }
+          },
+          "end": "\\*/",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.branch-node"
+            }
+          }
+        },
+        {
+          "begin": "//",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.whitespace.comment.leading.branch-node"
+            }
+          },
+          "end": "(?=$)",
+          "name": "comment.line.branch-node"
+        }
+      ]
+    }
+  }
+}

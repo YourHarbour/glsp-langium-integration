@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<convertion.healthcare.diagram:ActionCard xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:convertion.healthcare.diagram="convertion/healthcare/diagram" id="root" name="Both Test">
+  <Actions id="1" name="Check Symptomatic"/>
+  <Actions id="2" name="Perform LFT"/>
+  <Actions id="3" name="Perform Rapid PCR"/>
+  <Actions id="4" name="Check suitable for side room"/>
+  <Actions id="5" name="Check suitable for side room"/>
+  <Branches id="6" name="test PHEThree COVID gives Negative"/>
+  <Branches id="7" name="test PHEThree COVID gives Postitive"/>
+  <Branches id="8" name="test LateralFlowTest COVID give Positive"/>
+  <Branches id="9" name="test LateralFlowTest COVID give Negative"/>
+  <Branches id="10" name="test LIAT COVID gives Negative"/>
+  <Branches id="11" name="test LIAT COVID gives Positive"/>
+  <Branches id="12" name="the patient's Immunocompromised is No"/>
+  <Branches id="13" name="the patient's Immunocompromised is Yes"/>
+  <Branches id="14" name="the patient's Immunocompromised is No"/>
+  <AdmissionActions id="15" name="Admit to Amber Bay"/>
+  <AdmissionActions id="16" name="Admit to Side Room"/>
+  <AdmissionActions id="17" name="Admit to Red Bay"/>
+  <DischargeActions id="1b6e53b6-ef6a-4c10-8e63-a7a6dc255d8d" name="Discharge To Nature"/>
+  <ActionCardCondition id="18" name="Use for: Emergency patient cohort" ConditionalStatement="Use for: Emergency patient cohort"/>
+  <Edges id="19" name="check symptomatic to test PHEThree negative" source="1" target="6"/>
+  <Edges id="20" name="check symptomatic to test PHEThree positive" source="1" target="7"/>
+  <Edges id="21" name="test PHEThree negative to Peform LFT" source="6" target="2"/>
+  <Edges id="22" name="test PHEThree positive to Peform Rapid PCR" source="7" target="3"/>
+  <Edges id="23" name="Perform LFT to test Lateral positive" source="2" target="8"/>
+  <Edges id="24" name="test Lateral positive to Perform Rapid PCR" source="8" target="3"/>
+  <Edges id="25" name="test Lateral negative to Check suitable for side room" source="9" target="4"/>
+  <Edges id="26" name="Perform LFT to test Lateral negative" source="2" target="9"/>
+  <Edges id="27" name="Perform Rapid PCR to test LIAT negative" source="3" target="10"/>
+  <Edges id="28" name="test LIAT negative to Check suitable for side room" source="10" target="4"/>
+  <Edges id="29" name="Perform Rapid PCR to test LIAT positive" source="3" target="11"/>
+  <Edges id="30" name="test LIAT positive to Check suitable for side room sub" source="11" target="5"/>
+  <Edges id="31" name="Check suitable for side room to immuno No" source="4" target="12"/>
+  <Edges id="32" name="immuno No to Admit to Amber Bay" source="12" target="15"/>
+  <Edges id="33" name="Check suitable for side room to immuno Yes" source="4" target="13"/>
+  <Edges id="34" name="immuno Yes to Admit to Side Room" source="13" target="16"/>
+  <Edges id="35" name="Check suitable for side room to immuno Yes" source="5" target="13"/>
+  <Edges id="36" name="Check suitable for side room to immuno No" source="5" target="14"/>
+  <Edges id="37" name="immuno No to Admit to Red Bay" source="14" target="17"/>
+</convertion.healthcare.diagram:ActionCard>

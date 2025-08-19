@@ -1,0 +1,30 @@
+{
+    "projectName": "HealthcareDsml",
+    "languages": [
+        {
+            "id": "branch-node",
+            "grammar": "../ls/grammars/branch_node.langium",
+            "fileExtensions": [".branch_node"],
+            "textMate": {
+                "out": "../syntaxes/branch-node.tmLanguage.json"
+            }
+        },
+        {
+            "id": "admission-action-node",
+            "grammar": "../ls/grammars/admission_action_node.langium",
+            "fileExtensions": [".admission_action_node"],
+            "textMate": {
+                "out": "../syntaxes/admission-action-node.tmLanguage.json"
+            }
+        },
+        {
+            "id": "action-node",
+            "grammar": "../ls/grammars/action_node.langium",
+            "fileExtensions": [".action_node"],
+            "textMate": {
+                "out": "../syntaxes/action-node.tmLanguage.json"
+            }
+        }
+    ],
+    "out": "../ls/generated"
+}

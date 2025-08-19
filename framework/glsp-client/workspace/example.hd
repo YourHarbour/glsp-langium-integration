@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<convertion.healthcare.diagram:ActionCard xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:convertion.healthcare.diagram="convertion/healthcare/diagram" id="root" name="Both Test">
+  <Actions id="1" name="Perform PHEThree">
+    <Expression id="4cf779d5-8c7c-4eca-bccc-6635cb539949" rule="Perform">
+      <Tokens xsi:type="convertion.healthcare.diagram:NodeToken" id="f0863f2f-dcd6-490f-867a-55e07a7544c6" property="test" node="39"/>
+    </Expression>
+  </Actions>
+  <Actions id="2" name="Perform LateralFlowTest">
+    <Expression id="81a6c40f-8c7a-40ba-ab41-7ec33bbd33d2" rule="Perform">
+      <Tokens xsi:type="convertion.healthcare.diagram:NodeToken" id="0245ab54-fc6a-4612-a7a4-d4003c09b792" property="test" node="e8a3fc2b-908f-4052-aa55-a9b54ca946d9"/>
+    </Expression>
+  </Actions>
+  <Actions id="3" name="Perform LateralFlowTest">
+    <Expression id="b8f662c9-7a7d-42f6-9eb8-ec9659c3ed77" rule="Perform">
+      <Tokens xsi:type="convertion.healthcare.diagram:NodeToken" id="07cb85e5-3a42-4d95-9817-a8f733bed47a" property="test" node="e8a3fc2b-908f-4052-aa55-a9b54ca946d9"/>
+    </Expression>
+  </Actions>
+  <Actions id="4" name="Check suitable for side room">
+    <Expression id="9b21d151-4a9b-4aa0-92b2-9b7286ab1960" rule="Check">
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="016edf49-3728-482d-b1ce-cf66746be529" property="content" text="suitable"/>
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="578fcaee-a484-4617-b70c-cdb680f050d2" property="content" text="for"/>
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="6084b4fd-16f4-4d3f-bcad-ac9a719bfd02" property="content" text="side"/>
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="32a742d1-574b-4fd8-82fc-3d697367a898" property="content" text="room"/>
+    </Expression>
+  </Actions>
+  <Actions id="5" name="Check suitable for side room">
+    <Expression id="30a8cfb5-2ce1-4aaa-a7b6-fa9eaaea73c5" rule="Check">
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="6a8ea838-4677-4f82-879b-50f79938fc80" property="content" text="suitable"/>
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="fcde4d0c-c58c-460d-85ee-e5f877e223f5" property="content" text="for"/>
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="5c38bde1-374b-4006-8266-4c448d95f811" property="content" text="side"/>
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="10777786-c17e-42aa-8303-501e3ef1f99d" property="content" text="room"/>
+    </Expression>
+  </Actions>
+  <Branches id="6" name="test PHEThree COVID gives Negative">
+    <Expression id="1eb66526-3fa4-43e4-a8c6-adc05189a124" rule="TestExecution">
+      <Tokens xsi:type="convertion.healthcare.diagram:NodeToken" id="c387f000-1282-4ba9-a349-cd773019681b" property="test" node="39"/>
+      <Tokens xsi:type="convertion.healthcare.diagram:NodeToken" id="f56fdf98-a96b-46fd-b7a3-5c8d9ff6c16f" property="disease" node="38"/>
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="8abe56ef-8c80-4854-a6c1-1d971d10bb09" property="result" text="Negative"/>
+    </Expression>
+  </Branches>
+  <Branches id="7" name="test PHEThree COVID gives Positive">
+    <Expression id="0b94b75b-83b9-4baa-90dd-6f896a26a171" rule="TestExecution">
+      <Tokens xsi:type="convertion.healthcare.diagram:NodeToken" id="7db88ed2-3630-459f-9ccf-b3be17606f1b" property="test" node="39"/>
+      <Tokens xsi:type="convertion.healthcare.diagram:NodeToken" id="3d661110-5214-472a-bf04-7abec0d49428" property="disease" node="10aac5c3-aa32-4be5-8f72-eed30168c98f"/>
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="fe7342de-d6f0-4d9f-aa54-b4b3c5f98944" property="result" text="Positive"/>
+    </Expression>
+  </Branches>
+  <Branches id="8" name="test LateralFlowTest COVID gives Negative">
+    <Expression id="7e09353b-4b8c-4404-b185-d58d59562adf" rule="TestExecution">
+      <Tokens xsi:type="convertion.healthcare.diagram:NodeToken" id="704ae07d-6441-4300-8ea3-e4f94ab164ed" property="test" node="e8a3fc2b-908f-4052-aa55-a9b54ca946d9"/>
+      <Tokens xsi:type="convertion.healthcare.diagram:NodeToken" id="9e4b6890-ca9a-419e-ac30-e278d47a4d48" property="disease" node="38"/>
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="cbb3351b-92f6-41e5-afdd-f9efbf80d7ec" property="result" text="Negative"/>
+    </Expression>
+  </Branches>
+  <Branches id="9" name="test LateralFlowTest Fever gives Positive">
+    <Expression id="db9fa8ea-597f-41f7-a195-dc92bdcee30a" rule="TestExecution">
+      <Tokens xsi:type="convertion.healthcare.diagram:NodeToken" id="ec5496a0-572f-4a6e-9395-f52ceae12d6f" property="test" node="e8a3fc2b-908f-4052-aa55-a9b54ca946d9"/>
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="8724b944-b635-4d05-80b2-f01b8f22590b" property="result" text="Positive"/>
+    </Expression>
+  </Branches>
+  <Branches id="10" name="test LIAT COVID gives Negative">
+    <Expression id="b665d49b-20dc-44c4-8081-391d47a784fc" rule="TestExecution">
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="ab488b72-8025-429d-98f4-42f6c7ccc3a4" property="result" text="Negative"/>
+    </Expression>
+  </Branches>
+  <Branches id="11" name="test LIAT COVID gives Positive">
+    <Expression id="6e7d6858-1679-4c71-a248-fe8f845e7b2b" rule="TestExecution">
+      <Tokens xsi:type="convertion.healthcare.diagram:NodeToken" id="f9b77c3a-c641-46c8-8855-c960a8950030" property="disease" node="38"/>
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="7a757942-e099-4379-bd8f-4eaf5257e463" property="result" text="Positive"/>
+    </Expression>
+  </Branches>
+  <Branches id="12" name="the patient's Immunocompromised is No">
+    <Expression id="27eb0327-cb66-4e2f-b495-7823d38d6dae" rule="Immunocompromised">
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="e13e0ccb-99ab-43de-91c3-46cfd751391f" property="result" text="No"/>
+    </Expression>
+  </Branches>
+  <Branches id="13" name="the patient's Immunocompromised is Yes">
+    <Expression id="323fc8c9-2c14-4677-8e8d-c552ac1a4e32" rule="Immunocompromised">
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="75fbaad3-32dc-41fd-ba84-08e7d8f07fed" property="result" text="Yes"/>
+    </Expression>
+  </Branches>
+  <Branches id="14" name="the patient's Immunocompromised is No">
+    <Expression id="a5174ab3-6d21-40a5-9740-8a2b9563f631" rule="Immunocompromised">
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="1d59b416-b7ce-4355-8818-a0913e0dd2a7" property="result" text="No"/>
+    </Expression>
+  </Branches>
+  <AdmissionActions id="15" name="Admit to Amber Bay">
+    <Expression id="8a4b1582-8b37-455d-81ad-33708e771ec4" rule="AdmissionActionNode">
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="96a7ebc0-8a19-4bb5-b41d-9c86dc2a56a1" property="room" text="Amber Bay"/>
+    </Expression>
+  </AdmissionActions>
+  <AdmissionActions id="16" name="Admit to Side Room">
+    <Expression id="a7a860d4-722c-4aa1-8d04-5b1618eb95dd" rule="AdmissionActionNode">
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="c683b305-27b0-4f6d-9dce-16f2922f4e1b" property="room" text="Side Room"/>
+    </Expression>
+  </AdmissionActions>
+  <AdmissionActions id="17" name="Admit to Red Bay">
+    <Expression id="0db22aae-1097-48d5-902b-abadbf1fa719" rule="AdmissionActionNode">
+      <Tokens xsi:type="convertion.healthcare.diagram:TextToken" id="9615b20b-9277-4fb8-886e-f421a4dfc9e5" property="room" text="Red Bay"/>
+    </Expression>
+  </AdmissionActions>
+  <ActionCardCondition id="18" name="Use for: Emergency patient cohort" ConditionalStatement="Use for: Emergency patient cohort"/>
+  <Tests id="39" name="PHEThree" text="PHEThree"/>
+  <Tests id="e8a3fc2b-908f-4052-aa55-a9b54ca946d9" name="LateralFlowTest" text="LateralFlowTest"/>
+  <Tests id="65bd222f-e5c0-487b-ba85-abe735447a78" name="LIAT" text="LIAT"/>
+  <Diseases id="38" name="COVID" text="COVID"/>
+  <Diseases id="10aac5c3-aa32-4be5-8f72-eed30168c98f" name="Fever" text="Fever"/>
+  <Edges id="19" source="1" target="6"/>
+  <Edges id="20" source="1" target="7"/>
+  <Edges id="21" source="6" target="2"/>
+  <Edges id="22" source="7" target="3"/>
+  <Edges id="23" source="2" target="8"/>
+  <Edges id="24" source="8" target="3"/>
+  <Edges id="25" source="9" target="4"/>
+  <Edges id="26" source="2" target="9"/>
+  <Edges id="27" source="3" target="10"/>
+  <Edges id="28" source="10" target="4"/>
+  <Edges id="29" source="3" target="11"/>
+  <Edges id="30" source="11" target="5"/>
+  <Edges id="31" source="4" target="12"/>
+  <Edges id="32" source="12" target="15"/>
+  <Edges id="33" source="4" target="13"/>
+  <Edges id="34" source="13" target="16"/>
+  <Edges id="35" source="5" target="13"/>
+  <Edges id="36" source="5" target="14"/>
+  <Edges id="37" source="14" target="17"/>
+  <Edges id="002c404a-1d2f-455e-a6b2-db33ecdd0c4e" source="39" target="38"/>
+  <Edges id="ad7b27b1-c311-4c80-b885-cf4897cd1032" source="39" target="10aac5c3-aa32-4be5-8f72-eed30168c98f"/>
+  <Edges id="473a7ade-b1d9-475b-9354-a1d95810da3c" source="e8a3fc2b-908f-4052-aa55-a9b54ca946d9" target="38"/>
+  <Edges id="0bb52f75-a3c4-4e3b-ba7c-16b223d8e91f" source="65bd222f-e5c0-487b-ba85-abe735447a78" target="38"/>
+</convertion.healthcare.diagram:ActionCard>

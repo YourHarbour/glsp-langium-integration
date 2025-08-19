@@ -1,0 +1,17 @@
+{
+  "extends": "@eclipse-glsp/ts-config/tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "composite": true,
+    "jsx":"react",
+    "reactNamespace": "JSX",
+  },
+  "include": ["src", "../tasklist-glsp/src/actions"],
+  "exclude": ["node_modules"],
+  "references": [
+    {
+      "path": "../tasklist-glsp"
+    }
+  ]
+}

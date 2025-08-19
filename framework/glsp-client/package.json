@@ -1,0 +1,57 @@
+{
+  "name": "parent",
+  "version": "2.2.1",
+  "private": true,
+  "homepage": "https://www.eclipse.org/glsp/",
+  "bugs": "https://github.com/eclipse-glsp/glsp/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipse-glsp/glsp-examples.git"
+  },
+  "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT)",
+  "author": {
+    "name": "Eclipse GLSP"
+  },
+  "contributors": [
+    {
+      "name": "Eclipse GLSP Project",
+      "email": "glsp-dev@eclipse.org",
+      "url": "https://projects.eclipse.org/projects/ecd.glsp"
+    }
+  ],
+  "workspaces": [
+    "tasklist-glsp",
+    "tasklist-theia",
+    "tasklist-browser-app"
+  ],
+  "scripts": {
+    "all": "yarn clean && yarn install && yarn lint",
+    "browser": " yarn --cwd tasklist-browser-app",
+    "build": "lerna run build --scope tasklist-glsp --scope tasklist-theia --scope tasklist-browser-app && yarn browser bundle",
+    "build:client": "yarn client build:langium && yarn client build:worker && lerna run build --scope tasklist-glsp && yarn browser bundle",
+    "check:theia-version": "theia check:theia-version",
+    "clean": "lerna run clean",
+    "client": "yarn --cwd tasklist-glsp",
+    "compile": "tsc -b",
+    "lint": "eslint --ext .ts,.tsx .",
+    "lint:ci": "yarn lint --output-file eslint_report.json --format json",
+    "prepare": "yarn build && yarn check:theia-version",
+    "rebuild:browser": "theia rebuild:browser",
+    "start": "yarn browser start",
+    "start:external": "yarn browser start:external",
+    "watch": "concurrently --kill-others -n tsc,browser -c red,yellow,green \"tsc -b -w --preserveWatchOutput\" \"yarn -s browser watch\""
+  },
+  "devDependencies": {
+    "@eclipse-glsp/config": "2.2.1",
+    "concurrently": "^8.2.2",
+    "lerna": "8.1.7",
+    "typescript": "^5.5.3",
+    "vite": "~6.0.1",
+    "vite-node": "~2.1.6",
+    "vitest": "~2.1.6"
+  },
+  "engines": {
+    "node": ">=16.11.0",
+    "yarn": ">=1.7.0 <2.x.x"
+  }
+}

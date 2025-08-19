@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<convertion.healthcare.diagram:ActionCard xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:convertion.healthcare.diagram="convertion/healthcare/diagram" id="root" name="LiatTestingProcess">
+  <Actions id="38" name="Swab the patient"/>
+  <Actions id="39" name="Go to analyser"/>
+  <Actions id="40" name="Wait for result"/>
+  <Actions id="092c0617-13a9-416b-8fe8-bbbae8a3b5ec" name="Check symptom"/>
+  <ActionCardCondition id="095f8f19-1b3c-438c-a140-b9d338262087" name="  Use for Emergency Patient Cohort" ConditionalStatement="Use for: Emergency Patient Cohort"/>
+  <Edges id="41" name="edge 1" source="38" target="39"/>
+  <Edges id="42" name="edge 2" source="39" target="40"/>
+  <Edges id="9b815a55-2bea-476e-9198-db75af3956fa" name="NewConnectEdge2" source="092c0617-13a9-416b-8fe8-bbbae8a3b5ec" target="38"/>
+</convertion.healthcare.diagram:ActionCard>
