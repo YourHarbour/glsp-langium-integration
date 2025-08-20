@@ -1,12 +1,12 @@
+import { LogLevel } from '@codingame/monaco-vscode-api/services';
 import getKeybindingsServiceOverride from '@codingame/monaco-vscode-keybindings-service-override';
 import getLifecycleServiceOverride from '@codingame/monaco-vscode-lifecycle-service-override';
 import getLocalizationServiceOverride from '@codingame/monaco-vscode-localization-service-override';
 import { injectable } from 'inversify';
 import { EditorAppConfig, ExtensionConfig, WrapperConfig } from 'monaco-editor-wrapper';
-import { useWorkerFactory } from 'monaco-editor-wrapper/workerFactory';
 import { Logger } from 'monaco-languageclient/tools';
 import { createDefaultLocaleConfiguration } from 'monaco-languageclient/vscode/services';
-import { LogLevel } from 'vscode/services';
+import { useWorkerFactory } from 'monaco-languageclient/workerFactory';
 import { LangiumConfigParams, LangiumInitConfigParams } from '../../common/types/types.js';
 
 /**
@@ -28,6 +28,7 @@ export abstract class MonacoWrapperConfigService {
             $type: 'extended',
             htmlContainer: params.htmlContainer,
             logLevel: LogLevel.Debug,
+            id: params.id,
             vscodeApiConfig: {
                 serviceOverrides: {
                     ...getKeybindingsServiceOverride(),
@@ -64,17 +65,19 @@ export abstract class MonacoWrapperConfigService {
         wrapperConfig.extensions = [this.getExtensionConfig()];
 
         wrapperConfig.languageClientConfigs = {
-            language: {
-                clientOptions: {
-                    documentSelector: this.getDocumentSelectors()
-                },
-                connection: {
-                    options: {
-                        $type: 'WorkerDirect',
-                        worker: params.worker,
-                        messagePort: params.messagePort
+            configs: {
+                language: {
+                    clientOptions: {
+                        documentSelector: this.getDocumentSelectors()
                     },
-                    messageTransports: params.messageTransports
+                    connection: {
+                        options: {
+                            $type: 'WorkerDirect',
+                            worker: params.worker,
+                            messagePort: params.messagePort
+                        },
+                        messageTransports: params.messageTransports
+                    }
                 }
             }
         };
@@ -114,23 +117,23 @@ export abstract class MonacoWrapperConfigService {
     /** Starts the necessary Monaco workers */
     protected configureMonacoWorkers(logger?: Logger) {
         useWorkerFactory({
-            workerOverrides: {
-                ignoreMapping: true,
-                workerLoaders: {
-                    TextMateWorker: () => {
-                        const textMateWorker = new Worker(
-                            new URL('@codingame/monaco-vscode-textmate-service-override/worker', import.meta.url),
-                            { type: 'module', name: 'Healthcare Textmate' }
-                        );
-                        return textMateWorker;
-                    },
-                    TextEditorWorker: () => {
-                        const editorWorker = new Worker(new URL('monaco-editor/esm/vs/editor/editor.worker.js', import.meta.url), {
+            workerLoaders: {
+                TextMateWorker: () => {
+                    const textMateWorker = new Worker(
+                        new URL('@codingame/monaco-vscode-textmate-service-override/worker', import.meta.url),
+                        { type: 'module', name: 'Healthcare_Textmate' }
+                    );
+                    return textMateWorker;
+                },
+                TextEditorWorker: () => {
+                    const editorWorker = new Worker(
+                        new URL('@codingame/monaco-vscode-editor-api/esm/vs/editor/editor.worker.js', import.meta.url),
+                        {
                             type: 'module',
-                            name: 'Healthcare Editor'
-                        });
-                        return editorWorker;
-                    }
+                            name: 'Healthcare_Editor'
+                        }
+                    );
+                    return editorWorker;
                 }
             },
             logger

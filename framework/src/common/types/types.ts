@@ -61,6 +61,8 @@ export type MonacoLabelConfig = {
 
 /** Derived information to provide to the wrapper of a Monaco editor */
 export interface LangiumConfigParams {
+    /** Filename of the constructed Langium document */
+    id: string;
     /** Initial text information for the editor */
     codeResources?: CodeResources;
     /** The element to render the editor in */

@@ -169,11 +169,13 @@ export class MonacoContainerUIExtension extends GLSPAbstractUIExtension {
      */
     protected createEditorContent(container: HTMLElement, label: MonacoLabelConfig, init?: boolean) {
         this.langiumWorkerHandler.worker.then(worker => {
+            const id = `${label.containerId}.${label.type}`
             const wrapperConfig = init
-                ? this.monacoWrapperConfigService.createLangiumInitConfig({ worker, htmlContainer: container })
+                ? this.monacoWrapperConfigService.createLangiumInitConfig({ id, worker, htmlContainer: container })
                 : this.monacoWrapperConfigService.createLangiumGlobalConfig({
+                      id,
                       htmlContainer: container,
-                      codeResources: { main: { text: label.text, uri: `file:///monaco/edit/${label.containerId}.${label.type}` } },
+                      codeResources: { modified: { text: label.text, uri: `file:///monaco/edit/${id}` } },
                       overflowContainer: this.containerElement
                   });
 

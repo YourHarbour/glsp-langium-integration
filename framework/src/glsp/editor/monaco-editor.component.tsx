@@ -1,6 +1,6 @@
 /** @jsx React.createElement */
+import { editor, KeyCode } from '@codingame/monaco-vscode-editor-api';
 import { MonacoEditorReactComp } from '@typefox/monaco-editor-react';
-import { editor, KeyCode } from 'monaco-editor';
 import { MonacoEditorLanguageClientWrapper, WrapperConfig } from 'monaco-editor-wrapper';
 import React, { useEffect, useRef, useState } from 'react';
 import { MessageConnection } from 'vscode-languageclient';
@@ -21,10 +21,9 @@ export type MonacoEditorWrapperProps = {
 
 export const MonacoEditorWrapper = ({ wrapperConfig, onLoad, onSubmit, connection, initHeight }: MonacoEditorWrapperProps) => {
     // We actually don't want to care for rerenders, as they are handled by `MonacoEditorReactComp` itself, and only need the value on demand
-    const clientWrapper = useRef<MonacoEditorLanguageClientWrapper>();
-    const text = useRef<string>();
-    const ast = useRef<any>();
-    const editorRef = useRef<editor.IStandaloneCodeEditor>();
+    const text = useRef<string>(undefined);
+    const ast = useRef<any>(undefined);
+    const editorRef = useRef<editor.IStandaloneCodeEditor>(undefined);
     const containerRef = useRef<HTMLDivElement>(null);
     const hasFocus = useRef(false);
 
@@ -38,7 +37,6 @@ export const MonacoEditorWrapper = ({ wrapperConfig, onLoad, onSubmit, connectio
             if (containerRef.current && hasFocus.current && !containerRef.current.contains(event.target as any)) {
                 if (text.current != null && ast.current != null) {
                     // Save the textual model used by Monaco
-                    clientWrapper.current?.getModelRefs()?.modelRef?.object.save();
                     onSubmit(text.current, ast.current);
                 }
                 hasFocus.current = false;
@@ -61,10 +59,6 @@ export const MonacoEditorWrapper = ({ wrapperConfig, onLoad, onSubmit, connectio
                 style={{ height }}
                 wrapperConfig={wrapperConfig}
                 onLoad={wrapper => {
-                    clientWrapper.current = wrapper;
-
-                    // Ensures that any unsaved edits are reverted if reopening a file
-                    wrapper.getModelRefs()?.modelRef?.object.revert();
                     editorRef.current = wrapper.getEditor();
                     editorRef.current?.onKeyDown(e => {
                         if (e.keyCode === KeyCode.Enter) {
@@ -72,7 +66,7 @@ export const MonacoEditorWrapper = ({ wrapperConfig, onLoad, onSubmit, connectio
                         }
                     });
 
-                    const name = wrapper.getModelRefs()?.modelRef?.object.name;
+                    const name = wrapper.getWrapperConfig()?.id;
                     connection.then(connection =>
                         connection.onNotification(`${LangiumMessageTypes.AST_LANGIUM}/${name}`, data => {
                             ast.current = data.ast;
@@ -81,7 +75,7 @@ export const MonacoEditorWrapper = ({ wrapperConfig, onLoad, onSubmit, connectio
 
                     onLoad?.(wrapper, setHeight);
                 }}
-                onTextChanged={changes => (text.current = changes.text ?? '')}
+                onTextChanged={changes => (text.current = changes.modified ?? '')}
             />
         </div>
     );
