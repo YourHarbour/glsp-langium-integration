@@ -18,8 +18,8 @@ export class GlspScopeComputation extends DefaultScopeComputation {
         this.glsp = (services.shared as GlspLangiumSharedServices).glsp;
     }
 
-    override async computeExports(document: LangiumDocument): Promise<AstNodeDescription[]> {
-        const exports = await super.computeExports(document);
+    override async collectExportedSymbols(document: LangiumDocument): Promise<AstNodeDescription[]> {
+        const exports = await super.collectExportedSymbols(document);
 
         const customNodeDescriptions = this.getCustomNodes(document);
 
