@@ -7,7 +7,7 @@ import { BatchValidationListener } from '../../langium/worker/batch-validation-l
 import { DocumentAstHandler } from '../../langium/worker/document-ast-handler.js';
 import { ExternalNodeInformationService } from '../../langium/worker/external-node-information-service.js';
 import { GlspConnection } from '../../langium/worker/glsp-connection.js';
-import { ScopingInformationListener } from '../../langium/worker/validation-information-listener.js';
+import { ScopingInformationListener } from '../../langium/worker/scoping-information-listener.js';
 import { LangiumMessageTypes } from '../constants/langium-message-types.js';
 
 /** Information about the grammar-controlled nodes that need to be validated by Langium */

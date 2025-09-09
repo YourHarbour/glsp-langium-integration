@@ -16,7 +16,7 @@ import { BatchValidationListener } from './batch-validation-listener.js';
 import { DocumentAstHandler } from './document-ast-handler.js';
 import { ExternalNodeInformationService } from './external-node-information-service.js';
 import { GlspConnection } from './glsp-connection.js';
-import { ScopingInformationListener } from './validation-information-listener.js';
+import { ScopingInformationListener } from './scoping-information-listener.js';
 
 /** Creates an dependency injection module of the shared services that contains our custom services */
 export function createGlspSharedModule(

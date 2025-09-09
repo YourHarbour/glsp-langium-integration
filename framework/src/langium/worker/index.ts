@@ -4,5 +4,5 @@ export * from './document-ast-handler.js';
 export * from './external-node-information-service.js';
 export * from './glsp-connection.js';
 export * from './module.js';
+export * from './scoping-information-listener.js';
 export * from './start.js';
-export * from './validation-information-listener.js';
