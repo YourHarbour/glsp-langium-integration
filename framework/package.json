@@ -1,7 +1,11 @@
 {
   "name": "glsp-langium-integration",
-  "version": "0.0.9",
+  "version": "0.1.1",
   "description": "Integration Framework for GLSP and Langium",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YourHarbour/GLSP-Langium-Healthcare.git"
+  },
   "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT)",
   "author": {
     "name": "Andreas Hell"
@@ -22,9 +26,7 @@
   "scripts": {
     "build": "tsc -b",
     "clean": "rimraf lib tsconfig.tsbuildinfo",
-    "lint": "eslint --ext .ts,.tsx ./src",
-    "showConfig": "tsc --showConfig",
-    "watch": "tsc -w"
+    "lint": "eslint --ext .ts,.tsx ./src"
   },
   "resolutions": {
     "react": "18.3.1",
