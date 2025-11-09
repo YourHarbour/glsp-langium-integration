@@ -20,7 +20,9 @@ export class DocumentAstHandler {
 
     /** Since the complete AST contains technical Langium details and circular references, it is minimized before communication with the client */
     protected extractMinimalAst(value: any) {
-        if ('$type' in value) {
+        if (typeof value !== 'object') {
+            return value;
+        } else if ('$type' in value) {
             // handle grammar rule
             const minimizedAst: any = {};
             for (const key in value) {
