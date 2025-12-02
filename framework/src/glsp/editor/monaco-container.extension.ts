@@ -101,7 +101,12 @@ export class MonacoContainerUIExtension extends GLSPAbstractUIExtension {
      * @param labelId The id of the element to return
      */
     public returnElement(labelId: string): void {
-        this.containerElement.firstChild!.appendChild(this.elements[labelId]);
+        const elementToReturn = this.elements[labelId];
+        if (elementToReturn) {
+            this.containerElement.firstChild!.appendChild(elementToReturn);
+        } else {
+            console.warn(`Element to return with label id "${labelId}" does not exist!`);
+        }
     }
 
     /**
@@ -169,7 +174,7 @@ export class MonacoContainerUIExtension extends GLSPAbstractUIExtension {
      */
     protected createEditorContent(container: HTMLElement, label: MonacoLabelConfig, init?: boolean) {
         this.langiumWorkerHandler.worker.then(worker => {
-            const id = `${label.containerId}.${label.type}`
+            const id = `${label.containerId}.${label.type}`;
             const wrapperConfig = init
                 ? this.monacoWrapperConfigService.createLangiumInitConfig({ id, worker, htmlContainer: container })
                 : this.monacoWrapperConfigService.createLangiumGlobalConfig({
