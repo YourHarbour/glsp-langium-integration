@@ -52,3 +52,5 @@ documentation
 .vscode
 .idea
 .settings
+
+.DS_Store
