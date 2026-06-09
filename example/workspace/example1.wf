@@ -1,730 +1,1138 @@
 {
+  "cssClasses": [],
+  "type": "graph",
+  "position": {
+    "x": 0,
+    "y": 0
+  },
   "id": "sprotty",
+  "revision": 3,
   "children": [
     {
-      "name": "Push",
-      "taskType": "manual",
-      "id": "task0",
       "cssClasses": [
         "task",
         "manual"
       ],
-      "children": [
-        {
-          "id": "task0_icon",
-          "type": "icon",
-          "position": {
-            "x": 5.0,
-            "y": 5.0
-          },
-          "size": {
-            "width": 25.0,
-            "height": 20.0
-          }
-        },
-        {
-          "id": "task0_classname",
-          "type": "label:heading",
-          "position": {
-            "x": 31.0,
-            "y": 7.0
-          },
-          "size": {
-            "width": 31.921875,
-            "height": 16.0
-          },
-          "text": "Push",
-          "alignment": {
-            "x": 15.9609375,
-            "y": 13.0
-          }
-        }
-      ],
       "type": "task:manual",
+      "name": "Push",
+      "taskType": "manual",
+      "id": "task0",
       "position": {
-        "x": 70.0,
-        "y": 140.0
+        "x": 70,
+        "y": 140
       },
       "size": {
         "width": 72.921875,
-        "height": 30.0
+        "height": 30
       },
       "layout": "hbox",
       "layoutOptions": {
-        "paddingRight": 10.0,
+        "paddingRight": 10,
         "prefWidth": 72.921875,
-        "prefHeight": 30.0
+        "prefHeight": 30
       },
       "args": {
-        "radiusBottomLeft": 5.0,
-        "radiusTopLeft": 5.0,
-        "radiusTopRight": 5.0,
-        "radiusBottomRight": 5.0
-      }
+        "radiusBottomLeft": 5,
+        "radiusTopLeft": 5,
+        "radiusTopRight": 5,
+        "radiusBottomRight": 5
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "icon",
+          "id": "task0_icon",
+          "position": {
+            "x": 5,
+            "y": 5
+          },
+          "size": {
+            "width": 25,
+            "height": 20
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:heading",
+          "alignment": {
+            "x": 15.95703125,
+            "y": 13
+          },
+          "id": "task0_classname",
+          "position": {
+            "x": 31,
+            "y": 7
+          },
+          "size": {
+            "width": 31.9140625,
+            "height": 16
+          },
+          "text": "Push",
+          "children": []
+        }
+      ]
     },
     {
-      "name": "ChkWt",
-      "taskType": "automated",
-      "id": "task0_automated",
       "cssClasses": [
         "task",
         "automated"
       ],
-      "children": [
-        {
-          "id": "task0_automated_icon",
-          "type": "icon",
-          "position": {
-            "x": 5.0,
-            "y": 5.0
-          },
-          "size": {
-            "width": 25.0,
-            "height": 20.0
-          }
-        },
-        {
-          "id": "task0_automated_classname",
-          "type": "label:heading",
-          "position": {
-            "x": 31.0,
-            "y": 7.0
-          },
-          "size": {
-            "width": 42.1103515625,
-            "height": 16.0
-          },
-          "text": "ChkWt",
-          "alignment": {
-            "x": 21.0,
-            "y": 13.0
-          }
-        }
-      ],
       "type": "task:automated",
+      "name": "ChkWt",
+      "taskType": "automated",
+      "id": "task0_automated",
       "position": {
-        "x": 220.0,
-        "y": 90.0
+        "x": 220,
+        "y": 90
       },
       "size": {
-        "width": 83.1103515625,
-        "height": 30.0
+        "width": 83,
+        "height": 30
       },
       "layout": "hbox",
       "layoutOptions": {
         "prefWidth": 75.6103515625,
-        "paddingRight": 10.0,
-        "prefHeight": 30.0
+        "paddingRight": 10,
+        "prefHeight": 30
       },
       "args": {
-        "radiusBottomLeft": 5.0,
-        "radiusTopLeft": 5.0,
-        "radiusTopRight": 5.0,
-        "radiusBottomRight": 5.0
-      }
+        "radiusBottomLeft": 5,
+        "radiusTopLeft": 5,
+        "radiusTopRight": 5,
+        "radiusBottomRight": 5
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "icon",
+          "id": "task0_automated_icon",
+          "position": {
+            "x": 5,
+            "y": 5
+          },
+          "size": {
+            "width": 25,
+            "height": 20
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:heading",
+          "alignment": {
+            "x": 21,
+            "y": 13
+          },
+          "id": "task0_automated_classname",
+          "position": {
+            "x": 31,
+            "y": 7
+          },
+          "size": {
+            "width": 42,
+            "height": 16
+          },
+          "text": "ChkWt",
+          "children": []
+        }
+      ]
     },
     {
+      "cssClasses": [],
+      "type": "activityNode:merge",
       "nodeType": "mergeNode",
       "id": "activityNode1",
-      "type": "activityNode:merge",
       "position": {
-        "x": 500.0,
-        "y": 90.0
+        "x": 500,
+        "y": 90
       },
       "size": {
-        "width": 32.0,
-        "height": 32.0
+        "width": 32,
+        "height": 32
       },
       "layoutOptions": {
-        "minHeight": 32.0,
+        "minHeight": 32,
         "resizeContainer": false
-      }
+      },
+      "children": []
     },
     {
+      "cssClasses": [],
+      "type": "activityNode:decision",
       "nodeType": "decisionNode",
       "id": "activityNode2",
-      "type": "activityNode:decision",
       "position": {
-        "x": 330.0,
-        "y": 190.0
+        "x": 330,
+        "y": 190
       },
       "size": {
-        "width": 32.0,
-        "height": 32.0
+        "width": 32,
+        "height": 32
       },
       "layoutOptions": {
-        "minWidth": 32.0,
-        "minHeight": 32.0
-      }
+        "minWidth": 32,
+        "minHeight": 32
+      },
+      "children": []
     },
     {
+      "cssClasses": [],
+      "type": "activityNode:merge",
       "nodeType": "mergeNode",
       "id": "activityNode4",
-      "type": "activityNode:merge",
       "position": {
-        "x": 500.0,
-        "y": 190.0
+        "x": 500,
+        "y": 190
       },
       "size": {
-        "width": 32.0,
-        "height": 32.0
+        "width": 32,
+        "height": 32
       },
       "layoutOptions": {
-        "minHeight": 32.0,
+        "minHeight": 32,
         "resizeContainer": false
-      }
+      },
+      "children": []
     },
     {
+      "cssClasses": [],
+      "type": "activityNode:decision",
       "nodeType": "decisionNode",
       "id": "b00fc494-0fa4-4448-8bf9-162c2c0865e4",
-      "type": "activityNode:decision",
       "position": {
-        "x": 330.0,
-        "y": 90.0
+        "x": 330,
+        "y": 90
       },
       "size": {
-        "width": 32.0,
-        "height": 32.0
+        "width": 32,
+        "height": 32
       },
       "layoutOptions": {
-        "minWidth": 32.0,
-        "minHeight": 32.0
-      }
+        "minWidth": 32,
+        "minHeight": 32
+      },
+      "children": []
     },
     {
-      "nodeType": "forkNode",
-      "id": "bb2709f5-0ff0-4438-8853-b7e934b506d7",
       "cssClasses": [
         "forkOrJoin"
       ],
       "type": "activityNode:fork",
+      "nodeType": "forkNode",
+      "id": "bb2709f5-0ff0-4438-8853-b7e934b506d7",
       "position": {
-        "x": 170.0,
-        "y": 130.0
+        "x": 170,
+        "y": 130
       },
       "size": {
-        "width": 10.0,
-        "height": 50.0
-      }
+        "width": 10,
+        "height": 50
+      },
+      "children": []
     },
     {
-      "id": "d34c37e0-e45e-4cfe-a76f-0e9274ed8e60",
+      "cssClasses": [],
       "type": "edge",
+      "routingPoints": [],
+      "id": "d34c37e0-e45e-4cfe-a76f-0e9274ed8e60",
       "sourceId": "task0",
-      "targetId": "bb2709f5-0ff0-4438-8853-b7e934b506d7"
+      "targetId": "bb2709f5-0ff0-4438-8853-b7e934b506d7",
+      "args": {
+        "edgeSourcePointX": 142.921875,
+        "edgeSourcePointY": 155,
+        "edgeTargetPointX": 169.5,
+        "edgeTargetPointY": 155
+      },
+      "children": []
     },
     {
-      "nodeType": "joinNode",
-      "id": "bd94e44e-19f9-446e-89d4-97ca1a63c17b",
       "cssClasses": [
         "forkOrJoin"
       ],
       "type": "activityNode:join",
+      "nodeType": "joinNode",
+      "id": "bd94e44e-19f9-446e-89d4-97ca1a63c17b",
       "position": {
-        "x": 560.0,
-        "y": 130.0
+        "x": 560,
+        "y": 130
       },
       "size": {
-        "width": 10.0,
-        "height": 50.0
-      }
+        "width": 10,
+        "height": 50
+      },
+      "children": []
     },
     {
+      "cssClasses": [],
+      "type": "edge",
+      "routingPoints": [],
       "id": "7296b4a8-55c6-4c61-bddb-deacae77efa6",
-      "type": "edge",
       "sourceId": "activityNode1",
-      "targetId": "bd94e44e-19f9-446e-89d4-97ca1a63c17b"
+      "targetId": "bd94e44e-19f9-446e-89d4-97ca1a63c17b",
+      "args": {
+        "edgeSourcePointX": 524.3535533905932,
+        "edgeSourcePointY": 114.35355339059328,
+        "edgeTargetPointX": 560.4797799427402,
+        "edgeTargetPointY": 150.47977994274007
+      },
+      "children": []
     },
     {
-      "id": "0471cae4-c754-4e89-8337-96ed1546dd02",
+      "cssClasses": [],
       "type": "edge",
+      "routingPoints": [],
+      "id": "0471cae4-c754-4e89-8337-96ed1546dd02",
       "sourceId": "activityNode4",
-      "targetId": "bd94e44e-19f9-446e-89d4-97ca1a63c17b"
+      "targetId": "bd94e44e-19f9-446e-89d4-97ca1a63c17b",
+      "args": {
+        "edgeSourcePointX": 524.1864130470989,
+        "edgeSourcePointY": 197.4794476448563,
+        "edgeTargetPointX": 560.5150734393876,
+        "edgeTargetPointY": 159.66798478757613
+      },
+      "children": []
     },
     {
-      "name": "WtOK",
-      "taskType": "automated",
-      "id": "e47d5eba-612d-4c43-9aba-2c5502ff4f04",
       "cssClasses": [
         "task",
         "automated"
       ],
-      "children": [
-        {
-          "id": "e47d5eba-612d-4c43-9aba-2c5502ff4f04_icon",
-          "type": "icon",
-          "position": {
-            "x": 5.0,
-            "y": 5.0
-          },
-          "size": {
-            "width": 25.0,
-            "height": 20.0
-          }
-        },
-        {
-          "id": "e47d5eba-612d-4c43-9aba-2c5502ff4f04_classname",
-          "type": "label:heading",
-          "position": {
-            "x": 31.0,
-            "y": 7.0
-          },
-          "size": {
-            "width": 37.9931640625,
-            "height": 16.0
-          },
-          "text": "WtOK",
-          "alignment": {
-            "x": 18.671875,
-            "y": 13.0
-          }
-        }
-      ],
       "type": "task:automated",
+      "name": "WtOK",
+      "taskType": "automated",
+      "id": "e47d5eba-612d-4c43-9aba-2c5502ff4f04",
       "position": {
-        "x": 390.0,
-        "y": 120.0
+        "x": 390,
+        "y": 120
       },
       "size": {
-        "width": 78.9931640625,
-        "height": 30.0
+        "width": 78.3359375,
+        "height": 30
       },
       "layout": "hbox",
       "layoutOptions": {
         "prefWidth": 71.4931640625,
-        "paddingRight": 10.0,
-        "prefHeight": 30.0
+        "paddingRight": 10,
+        "prefHeight": 30
       },
       "args": {
-        "radiusBottomLeft": 5.0,
-        "radiusTopLeft": 5.0,
-        "radiusTopRight": 5.0,
-        "radiusBottomRight": 5.0
-      }
+        "radiusBottomLeft": 5,
+        "radiusTopLeft": 5,
+        "radiusTopRight": 5,
+        "radiusBottomRight": 5
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "icon",
+          "id": "e47d5eba-612d-4c43-9aba-2c5502ff4f04_icon",
+          "position": {
+            "x": 5,
+            "y": 5
+          },
+          "size": {
+            "width": 25,
+            "height": 20
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:heading",
+          "alignment": {
+            "x": 18.66796875,
+            "y": 13
+          },
+          "id": "e47d5eba-612d-4c43-9aba-2c5502ff4f04_classname",
+          "position": {
+            "x": 31,
+            "y": 7
+          },
+          "size": {
+            "width": 37.3359375,
+            "height": 16
+          },
+          "text": "WtOK",
+          "children": []
+        }
+      ]
     },
     {
-      "id": "2317f24a-034e-4352-8857-d361dc8f5ed7",
       "cssClasses": [
         "medium"
       ],
       "type": "edge:weighted",
+      "routingPoints": [],
+      "id": "2317f24a-034e-4352-8857-d361dc8f5ed7",
       "sourceId": "b00fc494-0fa4-4448-8bf9-162c2c0865e4",
-      "targetId": "e47d5eba-612d-4c43-9aba-2c5502ff4f04"
+      "targetId": "e47d5eba-612d-4c43-9aba-2c5502ff4f04",
+      "args": {
+        "edgeSourcePointX": 358.33546809972734,
+        "edgeSourcePointY": 110.30127824772794,
+        "edgeTargetPointX": 390,
+        "edgeTargetPointY": 121.34244516462356
+      },
+      "children": []
     },
     {
-      "id": "0a57ab51-c0b6-4a51-b42e-0192bf3767dc",
+      "cssClasses": [],
       "type": "edge",
+      "routingPoints": [],
+      "id": "0a57ab51-c0b6-4a51-b42e-0192bf3767dc",
       "sourceId": "bb2709f5-0ff0-4438-8853-b7e934b506d7",
       "targetId": "task0_automated",
       "args": {
-        "edgePadding": 10.0
-      }
+        "edgePadding": 10,
+        "edgeSourcePointX": 179.9147496404731,
+        "edgeSourcePointY": 152.1591042540618,
+        "edgeTargetPointX": 235.55,
+        "edgeTargetPointY": 120
+      },
+      "children": []
     },
     {
-      "id": "7a5d6bc3-c61e-4baa-8556-6015f33269c7",
+      "cssClasses": [],
       "type": "edge",
+      "routingPoints": [],
+      "id": "7a5d6bc3-c61e-4baa-8556-6015f33269c7",
       "sourceId": "task0_automated",
       "targetId": "b00fc494-0fa4-4448-8bf9-162c2c0865e4",
       "args": {
-        "edgePadding": 10.0
-      }
+        "edgePadding": 10,
+        "edgeSourcePointX": 303,
+        "edgeSourcePointY": 105.49112426035504,
+        "edgeTargetPointX": 329.6871695120264,
+        "edgeTargetPointY": 105.8069487516216
+      },
+      "children": []
     },
     {
-      "name": "RflWt",
-      "taskType": "manual",
-      "id": "a63cfd87-da7c-4846-912b-29040b776bfb",
       "cssClasses": [
         "task",
         "manual"
       ],
-      "children": [
-        {
-          "id": "54f08126-6041-44ce-9d8b-e7a549e48f91",
-          "type": "icon",
-          "position": {
-            "x": 5.0,
-            "y": 5.0
-          },
-          "size": {
-            "width": 25.0,
-            "height": 20.0
-          }
-        },
-        {
-          "id": "6e007d62-d441-4b08-8815-ad59de3b2ca8",
-          "type": "label:heading",
-          "position": {
-            "x": 31.0,
-            "y": 7.0
-          },
-          "size": {
-            "width": 34.32421875,
-            "height": 16.0
-          },
-          "text": "RflWt",
-          "alignment": {
-            "x": 17.109375,
-            "y": 13.0
-          }
-        }
-      ],
       "type": "task:manual",
+      "name": "RflWt",
+      "taskType": "manual",
+      "id": "a63cfd87-da7c-4846-912b-29040b776bfb",
       "position": {
-        "x": 390.0,
-        "y": 70.0
+        "x": 390,
+        "y": 70
       },
       "size": {
-        "width": 75.32421875,
-        "height": 30.0
+        "width": 75.21875,
+        "height": 30
       },
       "layout": "hbox",
       "layoutOptions": {
         "prefWidth": 67.82421875,
-        "paddingRight": 10.0,
-        "prefHeight": 30.0
+        "paddingRight": 10,
+        "prefHeight": 30
       },
       "args": {
-        "radiusBottomLeft": 5.0,
-        "radiusTopLeft": 5.0,
-        "radiusTopRight": 5.0,
-        "radiusBottomRight": 5.0
-      }
+        "radiusBottomLeft": 5,
+        "radiusTopLeft": 5,
+        "radiusTopRight": 5,
+        "radiusBottomRight": 5
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "icon",
+          "id": "54f08126-6041-44ce-9d8b-e7a549e48f91",
+          "position": {
+            "x": 5,
+            "y": 5
+          },
+          "size": {
+            "width": 25,
+            "height": 20
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:heading",
+          "alignment": {
+            "x": 17.109375,
+            "y": 13
+          },
+          "id": "6e007d62-d441-4b08-8815-ad59de3b2ca8",
+          "position": {
+            "x": 31,
+            "y": 7
+          },
+          "size": {
+            "width": 34.21875,
+            "height": 16
+          },
+          "text": "RflWt",
+          "children": []
+        }
+      ]
     },
     {
-      "id": "9bb443d7-44f3-4192-8dd8-1a2782593373",
       "cssClasses": [
         "medium"
       ],
       "type": "edge:weighted",
+      "routingPoints": [],
+      "id": "9bb443d7-44f3-4192-8dd8-1a2782593373",
       "sourceId": "b00fc494-0fa4-4448-8bf9-162c2c0865e4",
-      "targetId": "a63cfd87-da7c-4846-912b-29040b776bfb"
+      "targetId": "a63cfd87-da7c-4846-912b-29040b776bfb",
+      "args": {
+        "edgeSourcePointX": 359.2096707848127,
+        "edgeSourcePointY": 102.60084289971505,
+        "edgeTargetPointX": 390,
+        "edgeTargetPointY": 94.67777139574957
+      },
+      "children": []
     },
     {
-      "id": "a36985a7-3e61-499c-9bdb-5be2b00cb75c",
+      "cssClasses": [],
       "type": "edge",
+      "routingPoints": [],
+      "id": "a36985a7-3e61-499c-9bdb-5be2b00cb75c",
       "sourceId": "a63cfd87-da7c-4846-912b-29040b776bfb",
       "targetId": "activityNode1",
       "args": {
-        "edgePadding": 10.0
-      }
+        "edgePadding": 10,
+        "edgeSourcePointX": 465.21875,
+        "edgeSourcePointY": 93.93530139649991,
+        "edgeTargetPointX": 502.5851018730232,
+        "edgeTargetPointY": 102.81286493147306
+      },
+      "children": []
     },
     {
-      "id": "8880cd08-8d90-4408-acd4-6eae218b1650",
+      "cssClasses": [],
       "type": "edge",
+      "routingPoints": [],
+      "id": "8880cd08-8d90-4408-acd4-6eae218b1650",
       "sourceId": "e47d5eba-612d-4c43-9aba-2c5502ff4f04",
       "targetId": "activityNode1",
       "args": {
-        "edgePadding": 10.0
-      }
+        "edgePadding": 10,
+        "edgeSourcePointX": 468.3359375,
+        "edgeSourcePointY": 121.91875477979217,
+        "edgeTargetPointX": 503.5315505950934,
+        "edgeTargetPointY": 110.16418949939388
+      },
+      "children": []
     },
     {
-      "name": "Brew",
-      "taskType": "automated",
-      "id": "7afd430b-5031-4082-8190-7e755c57cde9",
       "cssClasses": [
         "task",
         "automated"
       ],
-      "children": [
-        {
-          "id": "7afd430b-5031-4082-8190-7e755c57cde9_icon",
-          "type": "icon",
-          "position": {
-            "x": 5.0,
-            "y": 5.0
-          },
-          "size": {
-            "width": 25.0,
-            "height": 20.0
-          }
-        },
-        {
-          "id": "7afd430b-5031-4082-8190-7e755c57cde9_classname",
-          "type": "label:heading",
-          "position": {
-            "x": 31.0,
-            "y": 7.0
-          },
-          "size": {
-            "width": 31.90625,
-            "height": 16.0
-          },
-          "text": "Brew",
-          "alignment": {
-            "x": 15.953125,
-            "y": 13.0
-          }
-        }
-      ],
       "type": "task:automated",
+      "name": "Brew",
+      "taskType": "automated",
+      "id": "7afd430b-5031-4082-8190-7e755c57cde9",
       "position": {
-        "x": 600.0,
-        "y": 140.0
+        "x": 600,
+        "y": 140
       },
       "size": {
         "width": 72.90625,
-        "height": 30.0
+        "height": 30
       },
       "layout": "hbox",
       "layoutOptions": {
         "prefWidth": 72.90625,
-        "paddingRight": 10.0,
-        "prefHeight": 30.0
+        "paddingRight": 10,
+        "prefHeight": 30
       },
       "args": {
-        "radiusBottomLeft": 5.0,
-        "radiusTopLeft": 5.0,
-        "radiusTopRight": 5.0,
-        "radiusBottomRight": 5.0
-      }
+        "radiusBottomLeft": 5,
+        "radiusTopLeft": 5,
+        "radiusTopRight": 5,
+        "radiusBottomRight": 5
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "icon",
+          "id": "7afd430b-5031-4082-8190-7e755c57cde9_icon",
+          "position": {
+            "x": 5,
+            "y": 5
+          },
+          "size": {
+            "width": 25,
+            "height": 20
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:heading",
+          "alignment": {
+            "x": 15.94921875,
+            "y": 13
+          },
+          "id": "7afd430b-5031-4082-8190-7e755c57cde9_classname",
+          "position": {
+            "x": 31,
+            "y": 7
+          },
+          "size": {
+            "width": 31.8984375,
+            "height": 16
+          },
+          "text": "Brew",
+          "children": []
+        }
+      ]
     },
     {
-      "id": "81efd1ef-ae19-4ea6-a20b-20857b1c6552",
+      "cssClasses": [],
       "type": "edge",
+      "routingPoints": [],
+      "id": "81efd1ef-ae19-4ea6-a20b-20857b1c6552",
       "sourceId": "bd94e44e-19f9-446e-89d4-97ca1a63c17b",
       "targetId": "7afd430b-5031-4082-8190-7e755c57cde9",
       "args": {
-        "edgePadding": 10.0
-      }
+        "edgePadding": 10,
+        "edgeSourcePointX": 570.5,
+        "edgeSourcePointY": 155,
+        "edgeTargetPointX": 600,
+        "edgeTargetPointY": 155
+      },
+      "children": []
     },
     {
+      "cssClasses": [
+        "task",
+        "automated"
+      ],
+      "type": "task:automated",
       "name": "ChkTp",
       "taskType": "automated",
       "id": "6c26f0a4-4354-45fa-9d9f-bc2b48adee17",
-      "cssClasses": [
-        "task",
-        "automated"
-      ],
-      "children": [
-        {
-          "id": "6c26f0a4-4354-45fa-9d9f-bc2b48adee17_icon",
-          "type": "icon",
-          "position": {
-            "x": 5.0,
-            "y": 5.0
-          },
-          "size": {
-            "width": 25.0,
-            "height": 20.0
-          }
-        },
-        {
-          "id": "6c26f0a4-4354-45fa-9d9f-bc2b48adee17_classname",
-          "type": "label:heading",
-          "position": {
-            "x": 31.0,
-            "y": 7.0
-          },
-          "size": {
-            "width": 41.4482421875,
-            "height": 16.0
-          },
-          "text": "ChkTp",
-          "alignment": {
-            "x": 20.6171875,
-            "y": 13.0
-          }
-        }
-      ],
-      "type": "task:automated",
       "position": {
-        "x": 220.0,
-        "y": 190.0
+        "x": 210,
+        "y": 210
       },
       "size": {
-        "width": 82.4482421875,
-        "height": 30.0
+        "width": 82.234375,
+        "height": 30
       },
       "layout": "hbox",
       "layoutOptions": {
-        "prefWidth": 74.9482421875,
-        "paddingRight": 10.0,
-        "prefHeight": 30.0
+        "prefWidth": 82.234375,
+        "paddingRight": 10,
+        "prefHeight": 30
       },
       "args": {
-        "radiusBottomLeft": 5.0,
-        "radiusTopLeft": 5.0,
-        "radiusTopRight": 5.0,
-        "radiusBottomRight": 5.0
-      }
+        "radiusBottomLeft": 5,
+        "radiusTopLeft": 5,
+        "radiusTopRight": 5,
+        "radiusBottomRight": 5
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "icon",
+          "id": "6c26f0a4-4354-45fa-9d9f-bc2b48adee17_icon",
+          "position": {
+            "x": 5,
+            "y": 5
+          },
+          "size": {
+            "width": 25,
+            "height": 20
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:heading",
+          "alignment": {
+            "x": 20.6171875,
+            "y": 13
+          },
+          "id": "6c26f0a4-4354-45fa-9d9f-bc2b48adee17_classname",
+          "position": {
+            "x": 31,
+            "y": 7
+          },
+          "size": {
+            "width": 41.234375,
+            "height": 16
+          },
+          "text": "ChkTp",
+          "children": []
+        }
+      ]
     },
     {
-      "id": "189aecf6-6043-4915-9f3e-7b2da8fd0d9c",
+      "cssClasses": [],
       "type": "edge",
+      "routingPoints": [],
+      "id": "189aecf6-6043-4915-9f3e-7b2da8fd0d9c",
       "sourceId": "bb2709f5-0ff0-4438-8853-b7e934b506d7",
       "targetId": "6c26f0a4-4354-45fa-9d9f-bc2b48adee17",
       "args": {
-        "edgePadding": 10.0
-      }
+        "edgePadding": 10,
+        "edgeSourcePointX": 179.59126614016793,
+        "edgeSourcePointY": 159.22228724375498,
+        "edgeTargetPointX": 234.80636160714286,
+        "edgeTargetPointY": 210
+      },
+      "children": []
     },
     {
-      "id": "69e45ef0-9c74-41da-a3ab-0a5669f83f96",
+      "cssClasses": [],
       "type": "edge",
+      "routingPoints": [],
+      "id": "69e45ef0-9c74-41da-a3ab-0a5669f83f96",
       "sourceId": "6c26f0a4-4354-45fa-9d9f-bc2b48adee17",
       "targetId": "activityNode2",
       "args": {
-        "edgePadding": 10.0
-      }
+        "edgePadding": 10,
+        "edgeSourcePointX": 292.234375,
+        "edgeSourcePointY": 216.76640592836557,
+        "edgeTargetPointX": 332.1791436806137,
+        "edgeTargetPointY": 208.7675852259158
+      },
+      "children": []
     },
     {
-      "name": "KeepTp",
-      "taskType": "automated",
-      "id": "4b06ed95-c9be-47df-9941-98099259be4a",
       "cssClasses": [
         "task",
         "automated"
       ],
-      "children": [
-        {
-          "id": "4b06ed95-c9be-47df-9941-98099259be4a_icon",
-          "type": "icon",
-          "position": {
-            "x": 5.0,
-            "y": 5.0
-          },
-          "size": {
-            "width": 25.0,
-            "height": 20.0
-          }
-        },
-        {
-          "id": "4b06ed95-c9be-47df-9941-98099259be4a_classname",
-          "type": "label:heading",
-          "position": {
-            "x": 31.0,
-            "y": 7.0
-          },
-          "size": {
-            "width": 49.248046875,
-            "height": 16.0
-          },
-          "text": "KeepTp",
-          "alignment": {
-            "x": 24.5234375,
-            "y": 13.0
-          }
-        }
-      ],
       "type": "task:automated",
+      "name": "KeepTp",
+      "taskType": "automated",
+      "id": "4b06ed95-c9be-47df-9941-98099259be4a",
       "position": {
-        "x": 390.0,
-        "y": 170.0
+        "x": 390,
+        "y": 170
       },
       "size": {
-        "width": 90.248046875,
-        "height": 30.0
+        "width": 90.0390625,
+        "height": 30
       },
       "layout": "hbox",
       "layoutOptions": {
         "prefWidth": 82.748046875,
-        "paddingRight": 10.0,
-        "prefHeight": 30.0
+        "paddingRight": 10,
+        "prefHeight": 30
       },
       "args": {
-        "radiusBottomLeft": 5.0,
-        "radiusTopLeft": 5.0,
-        "radiusTopRight": 5.0,
-        "radiusBottomRight": 5.0
-      }
+        "radiusBottomLeft": 5,
+        "radiusTopLeft": 5,
+        "radiusTopRight": 5,
+        "radiusBottomRight": 5
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "icon",
+          "id": "4b06ed95-c9be-47df-9941-98099259be4a_icon",
+          "position": {
+            "x": 5,
+            "y": 5
+          },
+          "size": {
+            "width": 25,
+            "height": 20
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:heading",
+          "alignment": {
+            "x": 24.51953125,
+            "y": 13
+          },
+          "id": "4b06ed95-c9be-47df-9941-98099259be4a_classname",
+          "position": {
+            "x": 31,
+            "y": 7
+          },
+          "size": {
+            "width": 49.0390625,
+            "height": 16
+          },
+          "text": "KeepTp",
+          "children": []
+        }
+      ]
     },
     {
-      "name": "PreHeat",
-      "taskType": "automated",
-      "id": "80d1792f-9c7e-41c0-8eca-eeb0509397b6",
       "cssClasses": [
         "task",
         "automated"
       ],
-      "children": [
-        {
-          "id": "80d1792f-9c7e-41c0-8eca-eeb0509397b6_icon",
-          "type": "icon",
-          "position": {
-            "x": 5.0,
-            "y": 5.0
-          },
-          "size": {
-            "width": 25.0,
-            "height": 20.0
-          }
-        },
-        {
-          "id": "80d1792f-9c7e-41c0-8eca-eeb0509397b6_classname",
-          "type": "label:heading",
-          "position": {
-            "x": 31.0,
-            "y": 7.0
-          },
-          "size": {
-            "width": 51.46875,
-            "height": 16.0
-          },
-          "text": "PreHeat",
-          "alignment": {
-            "x": 25.6796875,
-            "y": 13.0
-          }
-        }
-      ],
       "type": "task:automated",
+      "name": "PreHeat",
+      "taskType": "automated",
+      "id": "80d1792f-9c7e-41c0-8eca-eeb0509397b6",
       "position": {
-        "x": 390.0,
-        "y": 220.0
+        "x": 390,
+        "y": 220
       },
       "size": {
-        "width": 92.46875,
-        "height": 30.0
+        "width": 92.359375,
+        "height": 30
       },
       "layout": "hbox",
       "layoutOptions": {
         "prefWidth": 84.96875,
-        "paddingRight": 10.0,
-        "prefHeight": 30.0
+        "paddingRight": 10,
+        "prefHeight": 30
       },
       "args": {
-        "radiusBottomLeft": 5.0,
-        "radiusTopLeft": 5.0,
-        "radiusTopRight": 5.0,
-        "radiusBottomRight": 5.0
-      }
+        "radiusBottomLeft": 5,
+        "radiusTopLeft": 5,
+        "radiusTopRight": 5,
+        "radiusBottomRight": 5
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "icon",
+          "id": "80d1792f-9c7e-41c0-8eca-eeb0509397b6_icon",
+          "position": {
+            "x": 5,
+            "y": 5
+          },
+          "size": {
+            "width": 25,
+            "height": 20
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:heading",
+          "alignment": {
+            "x": 25.6796875,
+            "y": 13
+          },
+          "id": "80d1792f-9c7e-41c0-8eca-eeb0509397b6_classname",
+          "position": {
+            "x": 31,
+            "y": 7
+          },
+          "size": {
+            "width": 51.359375,
+            "height": 16
+          },
+          "text": "PreHeat",
+          "children": []
+        }
+      ]
     },
     {
+      "cssClasses": [
+        "medium"
+      ],
+      "type": "edge:weighted",
+      "routingPoints": [],
       "id": "d04afaf8-0894-4284-b844-22b255893107",
+      "sourceId": "activityNode2",
+      "targetId": "4b06ed95-c9be-47df-9941-98099259be4a",
+      "args": {
+        "edgeSourcePointX": 359.4326392144447,
+        "edgeSourcePointY": 202.83119626061455,
+        "edgeTargetPointX": 390,
+        "edgeTargetPointY": 195.62025538637062
+      },
+      "children": []
+    },
+    {
       "cssClasses": [
         "medium"
       ],
       "type": "edge:weighted",
-      "sourceId": "activityNode2",
-      "targetId": "4b06ed95-c9be-47df-9941-98099259be4a"
-    },
-    {
+      "routingPoints": [],
       "id": "b9ef468f-2aaf-41b9-b408-29e2d08e490e",
-      "cssClasses": [
-        "medium"
-      ],
-      "type": "edge:weighted",
       "sourceId": "activityNode2",
-      "targetId": "80d1792f-9c7e-41c0-8eca-eeb0509397b6"
+      "targetId": "80d1792f-9c7e-41c0-8eca-eeb0509397b6",
+      "args": {
+        "edgeSourcePointX": 358.5827123611592,
+        "edgeSourcePointY": 210.0463508866519,
+        "edgeTargetPointX": 390,
+        "edgeTargetPointY": 220.14952785237807
+      },
+      "children": []
     },
     {
-      "id": "58657bcf-6d32-4e7d-b73a-f84fd8d7158b",
+      "cssClasses": [],
       "type": "edge",
+      "routingPoints": [],
+      "id": "58657bcf-6d32-4e7d-b73a-f84fd8d7158b",
       "sourceId": "4b06ed95-c9be-47df-9941-98099259be4a",
       "targetId": "activityNode4",
       "args": {
-        "edgePadding": 10.0
-      }
+        "edgePadding": 10,
+        "edgeSourcePointX": 480.0390625,
+        "edgeSourcePointY": 196.67454536684193,
+        "edgeTargetPointX": 502.8107574385915,
+        "edgeTargetPointY": 202.57974202835695
+      },
+      "children": []
     },
     {
-      "id": "39a75477-facf-4960-b0bb-1989be7fb57f",
+      "cssClasses": [],
       "type": "edge",
+      "routingPoints": [],
+      "id": "39a75477-facf-4960-b0bb-1989be7fb57f",
       "sourceId": "80d1792f-9c7e-41c0-8eca-eeb0509397b6",
       "targetId": "activityNode4",
       "args": {
-        "edgePadding": 10.0
-      }
+        "edgePadding": 10,
+        "edgeSourcePointX": 477.4660560344828,
+        "edgeSourcePointY": 220,
+        "edgeTargetPointX": 503.79396478891766,
+        "edgeTargetPointY": 210.43464840007218
+      },
+      "children": []
+    },
+    {
+      "cssClasses": [
+        "inventory"
+      ],
+      "type": "node:inventory",
+      "items": [
+        {
+          "id": "inventory1_item0",
+          "name": "Steel",
+          "amount": 120
+        },
+        {
+          "id": "inventory1_item1",
+          "name": "Wood",
+          "amount": 80
+        },
+        {
+          "id": "inventory1_item2",
+          "name": "Screws",
+          "amount": 450
+        },
+        {
+          "id": "inventory1_item3",
+          "name": "newitem",
+          "amount": 100
+        }
+      ],
+      "id": "inventory1",
+      "position": {
+        "x": 70,
+        "y": 260
+      },
+      "size": {
+        "width": 160,
+        "height": 130
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "label:inventory-name",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "inventory1_item0_name",
+          "text": "Steel",
+          "position": {
+            "x": 6,
+            "y": 42
+          },
+          "size": {
+            "width": 27.3515625,
+            "height": 14
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:inventory-amount",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "inventory1_item0_amount",
+          "text": "120",
+          "position": {
+            "x": 105,
+            "y": 42
+          },
+          "size": {
+            "width": 20.0234375,
+            "height": 14
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:inventory-name",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "inventory1_item1_name",
+          "text": "Wood",
+          "position": {
+            "x": 6,
+            "y": 60
+          },
+          "size": {
+            "width": 31.140625,
+            "height": 14
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:inventory-amount",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "inventory1_item1_amount",
+          "text": "80",
+          "position": {
+            "x": 105,
+            "y": 60
+          },
+          "size": {
+            "width": 13.3515625,
+            "height": 14
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:inventory-name",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "inventory1_item2_name",
+          "text": "Screws",
+          "position": {
+            "x": 6,
+            "y": 78
+          },
+          "size": {
+            "width": 39.34375,
+            "height": 14
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:inventory-amount",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "inventory1_item2_amount",
+          "text": "450",
+          "position": {
+            "x": 105,
+            "y": 78
+          },
+          "size": {
+            "width": 20.0234375,
+            "height": 14
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:inventory-name",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "inventory1_item3_name",
+          "text": "newitem",
+          "position": {
+            "x": 6,
+            "y": 96
+          },
+          "size": {
+            "width": 44.6875,
+            "height": 14
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:inventory-amount",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "inventory1_item3_amount",
+          "text": "100",
+          "position": {
+            "x": 105,
+            "y": 96
+          },
+          "size": {
+            "width": 20.0234375,
+            "height": 14
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "cssClasses": [
+        "conditional"
+      ],
+      "type": "edge:conditional",
+      "routingPoints": [
+        {
+          "kind": "linear",
+          "x": 100,
+          "y": 195,
+          "pointIndex": 0
+        }
+      ],
+      "id": "conditionalEdge1",
+      "sourceId": "task0",
+      "targetId": "6c26f0a4-4354-45fa-9d9f-bc2b48adee17",
+      "condition": "if newitem.amount > 100",
+      "itemId": "inventory1_item3",
+      "args": {
+        "edgeSourcePointX": 104.0380859375,
+        "edgeSourcePointY": 170,
+        "edgeTargetPointX": 210,
+        "edgeTargetPointY": 216.83735718347722
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "label:monaco",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "conditionalEdge1_condition",
+          "text": "if newitem.amount > 100",
+          "edgePlacement": {
+            "position": 0.5,
+            "side": "on",
+            "rotate": false,
+            "offset": 0
+          },
+          "size": {
+            "width": 230,
+            "height": 22
+          },
+          "children": []
+        }
+      ]
     }
-  ],
-  "type": "graph",
-  "revision": 10
+  ]
 }

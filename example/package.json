@@ -25,11 +25,18 @@
     "workflow-browser-app",
     "workflow-server"
   ],
+  "resolutions": {
+    "**/@eclipse-glsp/client": "2.7.0",
+    "**/inversify": "6.2.2",
+    "**/react": "18.3.1",
+    "**/react-dom": "18.3.1"
+  },
   "scripts": {
     "all": "yarn clean && yarn build && yarn lint",
     "browser": "yarn --cwd workflow-browser-app",
     "build": "yarn compile && yarn bundle",
-    "bundle": "yarn server bundle && yarn browser bundle",
+    "bundle": "yarn glsp bundle && yarn server bundle && yarn browser bundle",
+    "glsp": "yarn --cwd workflow-glsp",
     "check:theia-version": "theia check:theia-version",
     "clean": "lerna run clean",
     "compile": "tsc -b",

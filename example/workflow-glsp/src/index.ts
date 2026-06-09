@@ -13,10 +13,23 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-export * from './direct-task-editing/direct-task-editor';
-export * from './direct-task-editing/task-editor-module';
-export * from './model';
-export * from './workflow-diagram-module';
-export * from './workflow-snapper';
-export * from './workflow-startup';
-export * from './workflow-views';
+export * from './direct-task-editing/direct-task-editor.js';
+export * from './direct-task-editing/task-editor-module.js';
+export * from './inventory-operations.js';
+export * from './inventory-views.js';
+export * from './langium-integration/condition-edit.operation.js';
+export * from './langium-integration/langium-worker.factory.js';
+export * from './langium-integration/model-update.handler.js';
+export * from './langium-integration/monaco-container.handler.js';
+export * from './langium-integration/monaco-editor-size.service.js';
+export * from './langium-integration/monaco-submit.service.js';
+export * from './langium-integration/monaco-wrapper-config.service.js';
+export * from './langium-integration/scoping-information.handler.js';
+export * from './langium-integration/workflow-langium-module.js';
+export * from './langium-integration/workflow-langium-types.js';
+export * from './model.js';
+export * from './sprotty-jsx.js';
+export * from './workflow-diagram-module.js';
+export * from './workflow-snapper.js';
+export * from './workflow-startup.js';
+export * from './workflow-views.js';

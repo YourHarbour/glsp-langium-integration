@@ -1,0 +1,47 @@
+{
+  "name": "conditional-edge",
+  "scopeName": "source.conditional-edge",
+  "fileTypes": [
+    ".conditional_edge"
+  ],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "name": "keyword.control.conditional-edge",
+      "match": "\\b(amount|if)\\b"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.conditional-edge",
+          "begin": "/\\*",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.conditional-edge"
+            }
+          },
+          "end": "\\*/",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.conditional-edge"
+            }
+          }
+        },
+        {
+          "begin": "//",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.whitespace.comment.leading.conditional-edge"
+            }
+          },
+          "end": "(?=$)",
+          "name": "comment.line.conditional-edge"
+        }
+      ]
+    }
+  }
+}

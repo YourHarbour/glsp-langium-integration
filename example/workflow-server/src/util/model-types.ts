@@ -30,6 +30,15 @@ export namespace ModelTypes {
     export const AUTOMATED_TASK = `${TASK}:automated`;
     export const CATEGORY = 'category';
     export const STRUCTURE = 'struct';
+    export const INVENTORY_NODE = 'node:inventory';
+    export const CONDITIONAL_EDGE = 'edge:conditional';
+    export const LABEL_MONACO = 'label:monaco';
+    /** Editable name cell of an inventory item row */
+    export const LABEL_INVENTORY_NAME = 'label:inventory-name';
+    /** Editable amount cell of an inventory item row */
+    export const LABEL_INVENTORY_AMOUNT = 'label:inventory-amount';
+    /** Grammar identifier of the conditional edge language, used as file extension of the Langium documents */
+    export const CONDITIONAL_EDGE_GRAMMAR = 'conditional_edge';
 
     export function toNodeType(type: string): string {
         switch (type) {

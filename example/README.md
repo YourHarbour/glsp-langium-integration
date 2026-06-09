@@ -1,10 +1,19 @@
-# Eclipse GLSP - Workflow Example
+# Eclipse GLSP - Workflow Example (with GLSP-Langium integration)
 
 This example shows a consistent example provided by all GLSP components.
 It implements a simple flow chart diagram editor with different types of nodes and edges.
 The `Workflow Example` is the main example used for development and integrates all GLSP features.
 
 <https://user-images.githubusercontent.com/588090/154459938-849ca684-11b3-472c-8a59-98ea6cb0b4c1.mp4>
+
+## GLSP-Langium integration additions
+
+On top of the stock workflow example, this variant integrates the [`glsp-langium-integration`](../framework) framework and extends the metamodel with two new elements:
+
+-   **Inventory node** (`node:inventory`): a node that holds a list of inventory items (`{ id, name, amount }`) and is rendered as an editable two-column table (item name / amount) by the JSX view in [`workflow-glsp/src/inventory-views.tsx`](workflow-glsp/src/inventory-views.tsx). New inventory nodes are created via the tool palette ("Inventory") with a few default items. The table is editable: **double-click** a name or amount cell to edit it inline (names must be unique identifiers, amounts non-negative integers — enforced by the label edit validator), the **⊗ button** at the end of each row deletes the item, and the **"+ Add item"** footer row appends a new item. All edits go through GLSP operations (`addInventoryItem`, `removeInventoryItem`, and a customized `applyLabelEdit`) so the items stay in sync with the Langium scoping information — e.g. renaming or deleting an item that is referenced by a conditional edge immediately flags that edge with a validation error.
+-   **Conditional edge** (`edge:conditional`): an edge guarded by a condition over the inventory items, e.g. `if Steel.amount > 100`. The condition is shown and edited directly on the edge in an embedded **Monaco editor** backed by a **Langium** language server running in a web worker. The grammar lives in [`workflow-glsp/src/langium/ls/grammars`](workflow-glsp/src/langium/ls/grammars); inventory item references are resolved against the items present on the diagram (with completion and validation, e.g. an error marker when the condition references an unknown item or has invalid syntax). Clicking outside the editor submits the text to the GLSP server (`applyConditionEdit` operation), which persists it in the source model.
+
+The Langium artifacts in `workflow-glsp/src/langium/ls/generated` and the TextMate grammar in `workflow-glsp/src/langium/syntaxes` are generated from the `.langium` grammar files by `langium-cli` (`yarn --cwd workflow-glsp build:langium`, automatically part of the build). The language server web worker is bundled by webpack (`yarn --cwd workflow-glsp build:worker`).
 
 ## Prerequisites
 

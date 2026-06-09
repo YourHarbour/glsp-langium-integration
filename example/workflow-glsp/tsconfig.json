@@ -5,7 +5,19 @@
     "outDir": "lib",
     "reactNamespace": "JSX",
     "skipLibCheck": true,
-    "composite": true
+    "composite": true,
+    // The glsp-langium-integration framework and the monaco/langium stack are ESM-only,
+    // therefore this package is compiled as ESM with Node-style resolution
+    // (mirrors the tasklist-glsp setup of the Healthcare example)
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2022",
+    // keep the pre-ES2022 class field semantics expected by the GLSP/sprotty model classes
+    "useDefineForClassFields": false,
+    "resolveJsonModule": true,
+    "lib": ["WebWorker", "ESNext", "DOM"]
   },
-  "include": ["src"]
+  "include": ["src", "src/**/*.json"]
 }

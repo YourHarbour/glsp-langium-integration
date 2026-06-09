@@ -140,3 +140,49 @@ export class CategoryNode extends RectangularNode implements Nameable, WithEdita
         return undefined;
     }
 }
+
+/** A single item of an {@link InventoryNode}, e.g. `Steel` with an amount of `120` */
+export interface InventoryItem {
+    id: string;
+    name: string;
+    amount: number;
+}
+
+/**
+ * A node holding the available inventory items. It is rendered as a two-column table
+ * (item name and amount) by the `InventoryNodeView`. Its items can be referenced by
+ * the conditions of {@link ConditionalEdge}s.
+ */
+export class InventoryNode extends RectangularNode {
+    static override readonly DEFAULT_FEATURES = [
+        deletableFeature,
+        selectFeature,
+        boundsFeature,
+        moveFeature,
+        layoutContainerFeature,
+        fadeFeature,
+        hoverFeedbackFeature,
+        popupFeature
+    ];
+
+    items: InventoryItem[] = [];
+}
+
+export function isInventoryNode(element: GModelElement): element is InventoryNode {
+    return element instanceof InventoryNode;
+}
+
+/**
+ * An edge that is only taken if its condition over the inventory items holds,
+ * e.g. `if Steel.amount > 100`. The condition is edited via an embedded Monaco
+ * editor (the `label:monaco` child of the edge) backed by Langium.
+ */
+export class ConditionalEdge extends GEdge {
+    condition?: string;
+    /** Id of the inventory item referenced by the condition, if resolved */
+    itemId?: string;
+}
+
+export function isConditionalEdge(element: GModelElement): element is ConditionalEdge {
+    return element instanceof ConditionalEdge;
+}

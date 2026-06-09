@@ -38,7 +38,7 @@ import {
     toActionArray
 } from '@eclipse-glsp/client';
 import { inject, injectable } from 'inversify';
-import { TaskNode, isTaskNode } from '../model';
+import { TaskNode, isTaskNode } from '../model.js';
 
 /**
  * Is send from the {@link TaskEditor} to the GLSP server

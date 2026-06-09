@@ -1,0 +1,14 @@
+{
+    "projectName": "WorkflowDsl",
+    "languages": [
+        {
+            "id": "conditional-edge",
+            "grammar": "../ls/grammars/conditional_edge.langium",
+            "fileExtensions": [".conditional_edge"],
+            "textMate": {
+                "out": "../syntaxes/conditional-edge.tmLanguage.json"
+            }
+        }
+    ],
+    "out": "../ls/generated"
+}

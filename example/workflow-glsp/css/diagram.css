@@ -111,3 +111,96 @@
     margin-top: -3px;
     margin-left: -3px;
 }
+
+/* ------------------------------------------------------------------------ */
+/* Inventory node (rendered as a two-column table by InventoryNodeView)     */
+/* ------------------------------------------------------------------------ */
+
+.node-inventory .inventory-body {
+    fill: #4a7d4a;
+}
+
+.node-inventory text {
+    stroke-width: 0;
+    fill: #f0f3f8;
+    font-family: sans-serif;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.node-inventory .inventory-title {
+    font-size: 0.75em;
+    font-weight: bold;
+}
+
+.node-inventory .inventory-header {
+    font-size: 0.6em;
+    font-weight: bold;
+}
+
+/* the editable name/amount cells are regular sprotty labels created by the server */
+.node-inventory .sprotty-label {
+    text-anchor: start;
+    dominant-baseline: text-before-edge;
+    font-size: 0.6em;
+    font-weight: normal;
+    fill: #f0f3f8;
+}
+
+.node-inventory .inventory-line {
+    stroke: #f0f3f8;
+    stroke-width: 1;
+    opacity: 0.6;
+}
+
+.node-inventory .inventory-button {
+    cursor: pointer;
+    opacity: 0.45;
+}
+
+.node-inventory .inventory-button:hover {
+    opacity: 1;
+}
+
+.node-inventory .inventory-button-background {
+    fill: #f0f3f8;
+    fill-opacity: 0.15;
+    stroke: none;
+}
+
+.node-inventory .inventory-button-icon {
+    stroke: #f0f3f8;
+    stroke-width: 1.4;
+    fill: none;
+}
+
+.node-inventory .inventory-add-label {
+    font-size: 0.6em;
+    font-weight: bold;
+}
+
+/* ------------------------------------------------------------------------ */
+/* Conditional edge with embedded Monaco editor                             */
+/* ------------------------------------------------------------------------ */
+
+.sprotty-edge.conditional:not(.selected),
+.sprotty-edge.conditional:not(.selected) .arrow {
+    stroke: #4a7d4a;
+}
+
+.sprotty-edge.conditional:not(.selected) .arrow {
+    fill: #4a7d4a;
+}
+
+.sprotty-edge.conditional {
+    stroke-dasharray: 7, 4;
+}
+
+.sprotty-edge.conditional .arrow {
+    stroke-dasharray: none;
+}
+
+/* The monaco label is rendered into a foreignObject; give it a subtle backdrop */
+.label\:monaco {
+    overflow: visible;
+}

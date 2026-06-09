@@ -43,18 +43,21 @@ import {
     editLabelFeature,
     gridModule,
     helperLineModule,
-    initializeDiagramContainer,
     overrideModelElement
 } from '@eclipse-glsp/client';
 import 'balloon-css/balloon.min.css';
+import { initializeLangiumDiagramContainer, MonacoLabelView } from 'glsp-langium-integration/glsp';
 import { Container } from 'inversify';
 import 'sprotty/css/edit-label.css';
 import '../css/diagram.css';
-import { taskEditorModule } from './direct-task-editing/task-editor-module';
-import { BranchingNode, CategoryNode, Icon, SynchronizationNode, TaskNode, WeightedEdge } from './model';
-import { WorkflowSnapper } from './workflow-snapper';
-import { WorkflowStartup } from './workflow-startup';
-import { IconView, WorkflowEdgeView } from './workflow-views';
+import { taskEditorModule } from './direct-task-editing/task-editor-module.js';
+import { InventoryNodeView } from './inventory-views.js';
+import { workflowLangiumModule } from './langium-integration/workflow-langium-module.js';
+import { WorkflowLangiumTypes } from './langium-integration/workflow-langium-types.js';
+import { BranchingNode, CategoryNode, ConditionalEdge, Icon, InventoryNode, SynchronizationNode, TaskNode, WeightedEdge } from './model.js';
+import { WorkflowSnapper } from './workflow-snapper.js';
+import { WorkflowStartup } from './workflow-startup.js';
+import { IconView, WorkflowEdgeView } from './workflow-views.js';
 
 export const workflowDiagramModule = new FeatureModule(
     (bind, unbind, isBound, rebind) => {
@@ -81,6 +84,11 @@ export const workflowDiagramModule = new FeatureModule(
         overrideModelElement(context, DefaultTypes.GRAPH, GGraph, GLSPProjectionView);
         configureModelElement(context, 'category', CategoryNode, RoundedCornerNodeView);
         configureModelElement(context, 'struct', GCompartment, StructureCompartmentView);
+        configureModelElement(context, WorkflowLangiumTypes.INVENTORY_NODE, InventoryNode, InventoryNodeView);
+        configureModelElement(context, WorkflowLangiumTypes.CONDITIONAL_EDGE, ConditionalEdge, WorkflowEdgeView);
+        configureModelElement(context, WorkflowLangiumTypes.MONACO_LABEL, GLabel, MonacoLabelView);
+        configureModelElement(context, WorkflowLangiumTypes.LABEL_INVENTORY_NAME, GLabel, GLabelView, { enable: [editLabelFeature] });
+        configureModelElement(context, WorkflowLangiumTypes.LABEL_INVENTORY_AMOUNT, GLabel, GLabelView, { enable: [editLabelFeature] });
 
         bind<IHelperLineOptions>(TYPES.IHelperLineOptions).toDynamicValue(ctx => {
             const options: IHelperLineOptions = {};
@@ -101,13 +109,14 @@ export function createWorkflowDiagramContainer(...containerConfiguration: Contai
 }
 
 export function initializeWorkflowDiagramContainer(container: Container, ...containerConfiguration: ContainerConfiguration): Container {
-    return initializeDiagramContainer(
+    return initializeLangiumDiagramContainer(
         container,
         taskEditorModule,
         helperLineModule,
         gridModule,
         debugModule,
         workflowDiagramModule,
+        workflowLangiumModule,
         ...containerConfiguration
     );
 }

@@ -24,12 +24,12 @@ import {
     findParentByFeature,
     getSubType,
     setAttr,
-    svg,
     toDegrees
 } from '@eclipse-glsp/client';
 import { injectable } from 'inversify';
 import { VNode } from 'snabbdom';
-import { Icon, isTaskNode } from './model';
+import { Icon, isTaskNode } from './model.js';
+import { svg } from './sprotty-jsx.js';
 
 @injectable()
 export class WorkflowEdgeView extends PolylineEdgeViewWithGapsOnIntersections {

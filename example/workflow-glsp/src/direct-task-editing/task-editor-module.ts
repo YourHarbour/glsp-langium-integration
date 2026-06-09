@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 import { bindAsService, FeatureModule, TYPES } from '@eclipse-glsp/client';
-import { TaskEditor } from './direct-task-editor';
+import { TaskEditor } from './direct-task-editor.js';
 
 export const taskEditorModule = new FeatureModule(
     (bind, _unbind, _isBound) => {
