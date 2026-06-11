@@ -6,7 +6,7 @@
     "y": 0
   },
   "id": "sprotty",
-  "revision": 3,
+  "revision": 2,
   "children": [
     {
       "cssClasses": [
@@ -531,8 +531,8 @@
       "taskType": "automated",
       "id": "7afd430b-5031-4082-8190-7e755c57cde9",
       "position": {
-        "x": 600,
-        "y": 140
+        "x": 900,
+        "y": 60
       },
       "size": {
         "width": 72.90625,
@@ -587,22 +587,6 @@
       ]
     },
     {
-      "cssClasses": [],
-      "type": "edge",
-      "routingPoints": [],
-      "id": "81efd1ef-ae19-4ea6-a20b-20857b1c6552",
-      "sourceId": "bd94e44e-19f9-446e-89d4-97ca1a63c17b",
-      "targetId": "7afd430b-5031-4082-8190-7e755c57cde9",
-      "args": {
-        "edgePadding": 10,
-        "edgeSourcePointX": 570.5,
-        "edgeSourcePointY": 155,
-        "edgeTargetPointX": 600,
-        "edgeTargetPointY": 155
-      },
-      "children": []
-    },
-    {
       "cssClasses": [
         "task",
         "automated"
@@ -612,8 +596,8 @@
       "taskType": "automated",
       "id": "6c26f0a4-4354-45fa-9d9f-bc2b48adee17",
       "position": {
-        "x": 210,
-        "y": 210
+        "x": 220,
+        "y": 190
       },
       "size": {
         "width": 82.234375,
@@ -621,7 +605,7 @@
       },
       "layout": "hbox",
       "layoutOptions": {
-        "prefWidth": 82.234375,
+        "prefWidth": 74.9482421875,
         "paddingRight": 10,
         "prefHeight": 30
       },
@@ -676,10 +660,10 @@
       "targetId": "6c26f0a4-4354-45fa-9d9f-bc2b48adee17",
       "args": {
         "edgePadding": 10,
-        "edgeSourcePointX": 179.59126614016793,
-        "edgeSourcePointY": 159.22228724375498,
-        "edgeTargetPointX": 234.80636160714286,
-        "edgeTargetPointY": 210
+        "edgeSourcePointX": 179.9122038403086,
+        "edgeSourcePointY": 157.85204613789122,
+        "edgeTargetPointX": 235.28203125,
+        "edgeTargetPointY": 190
       },
       "children": []
     },
@@ -692,10 +676,10 @@
       "targetId": "activityNode2",
       "args": {
         "edgePadding": 10,
-        "edgeSourcePointX": 292.234375,
-        "edgeSourcePointY": 216.76640592836557,
-        "edgeTargetPointX": 332.1791436806137,
-        "edgeTargetPointY": 208.7675852259158
+        "edgeSourcePointX": 302.234375,
+        "edgeSourcePointY": 205.48439944776806,
+        "edgeTargetPointX": 329.6863350670372,
+        "edgeTargetPointY": 205.80780956176537
       },
       "children": []
     },
@@ -896,40 +880,119 @@
       "children": []
     },
     {
+      "cssClasses": [],
+      "type": "activityNode:decision",
+      "id": "beansDecision",
+      "nodeType": "decisionNode",
+      "position": {
+        "x": 620,
+        "y": 139
+      },
+      "size": {
+        "width": 32,
+        "height": 32
+      },
+      "layoutOptions": {
+        "minWidth": 32,
+        "minHeight": 32
+      },
+      "children": []
+    },
+    {
+      "cssClasses": [
+        "task",
+        "manual"
+      ],
+      "type": "task:manual",
+      "id": "refillBeans",
+      "name": "RefillBeans",
+      "taskType": "manual",
+      "position": {
+        "x": 900,
+        "y": 230
+      },
+      "size": {
+        "width": 133,
+        "height": 30
+      },
+      "layout": "hbox",
+      "layoutOptions": {
+        "paddingRight": 10,
+        "prefWidth": 133,
+        "prefHeight": 30
+      },
+      "args": {
+        "radiusBottomLeft": 5,
+        "radiusTopLeft": 5,
+        "radiusTopRight": 5,
+        "radiusBottomRight": 5
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "icon",
+          "id": "refillBeans_icon",
+          "position": {
+            "x": 5,
+            "y": 5
+          },
+          "size": {
+            "width": 25,
+            "height": 20
+          },
+          "children": []
+        },
+        {
+          "cssClasses": [],
+          "type": "label:heading",
+          "alignment": {
+            "x": 35.41015625,
+            "y": 13
+          },
+          "id": "refillBeans_classname",
+          "text": "RefillBeans",
+          "position": {
+            "x": 31,
+            "y": 7
+          },
+          "size": {
+            "width": 70.8203125,
+            "height": 16
+          },
+          "children": []
+        }
+      ]
+    },
+    {
       "cssClasses": [
         "inventory"
       ],
       "type": "node:inventory",
       "items": [
         {
-          "id": "inventory1_item0",
-          "name": "Steel",
-          "amount": 120
+          "id": "coffeeInventory_item0",
+          "name": "Beans",
+          "amount": 35
         },
         {
-          "id": "inventory1_item1",
-          "name": "Wood",
-          "amount": 80
+          "id": "coffeeInventory_item1",
+          "name": "Water",
+          "amount": 900
         },
         {
-          "id": "inventory1_item2",
-          "name": "Screws",
-          "amount": 450
-        },
-        {
-          "id": "inventory1_item3",
-          "name": "newitem",
-          "amount": 100
+          "id": "coffeeInventory_item2",
+          "name": "Milk",
+          "amount": 200
         }
       ],
-      "id": "inventory1",
+      "id": "coffeeInventory",
       "position": {
         "x": 70,
         "y": 260
       },
       "size": {
         "width": 160,
-        "height": 130
+        "height": 112
       },
       "children": [
         {
@@ -939,14 +1002,14 @@
             "x": 0,
             "y": 0
           },
-          "id": "inventory1_item0_name",
-          "text": "Steel",
+          "id": "coffeeInventory_item0_name",
+          "text": "Beans",
           "position": {
             "x": 6,
             "y": 42
           },
           "size": {
-            "width": 27.3515625,
+            "width": 34.03125,
             "height": 14
           },
           "children": []
@@ -958,49 +1021,11 @@
             "x": 0,
             "y": 0
           },
-          "id": "inventory1_item0_amount",
-          "text": "120",
+          "id": "coffeeInventory_item0_amount",
+          "text": "35",
           "position": {
             "x": 105,
             "y": 42
-          },
-          "size": {
-            "width": 20.0234375,
-            "height": 14
-          },
-          "children": []
-        },
-        {
-          "cssClasses": [],
-          "type": "label:inventory-name",
-          "alignment": {
-            "x": 0,
-            "y": 0
-          },
-          "id": "inventory1_item1_name",
-          "text": "Wood",
-          "position": {
-            "x": 6,
-            "y": 60
-          },
-          "size": {
-            "width": 31.140625,
-            "height": 14
-          },
-          "children": []
-        },
-        {
-          "cssClasses": [],
-          "type": "label:inventory-amount",
-          "alignment": {
-            "x": 0,
-            "y": 0
-          },
-          "id": "inventory1_item1_amount",
-          "text": "80",
-          "position": {
-            "x": 105,
-            "y": 60
           },
           "size": {
             "width": 13.3515625,
@@ -1015,14 +1040,14 @@
             "x": 0,
             "y": 0
           },
-          "id": "inventory1_item2_name",
-          "text": "Screws",
+          "id": "coffeeInventory_item1_name",
+          "text": "Water",
           "position": {
             "x": 6,
-            "y": 78
+            "y": 60
           },
           "size": {
-            "width": 39.34375,
+            "width": 31.5703125,
             "height": 14
           },
           "children": []
@@ -1034,11 +1059,11 @@
             "x": 0,
             "y": 0
           },
-          "id": "inventory1_item2_amount",
-          "text": "450",
+          "id": "coffeeInventory_item1_amount",
+          "text": "900",
           "position": {
             "x": 105,
-            "y": 78
+            "y": 60
           },
           "size": {
             "width": 20.0234375,
@@ -1053,14 +1078,14 @@
             "x": 0,
             "y": 0
           },
-          "id": "inventory1_item3_name",
-          "text": "newitem",
+          "id": "coffeeInventory_item2_name",
+          "text": "Milk",
           "position": {
             "x": 6,
-            "y": 96
+            "y": 78
           },
           "size": {
-            "width": 44.6875,
+            "width": 21.328125,
             "height": 14
           },
           "children": []
@@ -1072,11 +1097,11 @@
             "x": 0,
             "y": 0
           },
-          "id": "inventory1_item3_amount",
-          "text": "100",
+          "id": "coffeeInventory_item2_amount",
+          "text": "200",
           "position": {
             "x": 105,
-            "y": 96
+            "y": 78
           },
           "size": {
             "width": 20.0234375,
@@ -1087,28 +1112,37 @@
       ]
     },
     {
+      "cssClasses": [],
+      "type": "edge",
+      "routingPoints": [],
+      "id": "edge_join_beansDecision",
+      "sourceId": "bd94e44e-19f9-446e-89d4-97ca1a63c17b",
+      "targetId": "beansDecision",
+      "args": {
+        "edgePadding": 10,
+        "edgeSourcePointX": 570.5,
+        "edgeSourcePointY": 155,
+        "edgeTargetPointX": 619.5,
+        "edgeTargetPointY": 155
+      },
+      "children": []
+    },
+    {
       "cssClasses": [
         "conditional"
       ],
       "type": "edge:conditional",
-      "routingPoints": [
-        {
-          "kind": "linear",
-          "x": 100,
-          "y": 195,
-          "pointIndex": 0
-        }
-      ],
-      "id": "conditionalEdge1",
-      "sourceId": "task0",
-      "targetId": "6c26f0a4-4354-45fa-9d9f-bc2b48adee17",
-      "condition": "if newitem.amount > 100",
-      "itemId": "inventory1_item3",
+      "routingPoints": [],
+      "id": "conditionalEdgeBrew",
+      "sourceId": "beansDecision",
+      "targetId": "7afd430b-5031-4082-8190-7e755c57cde9",
+      "condition": "if Beans.amount >= 20",
+      "itemId": "coffeeInventory_item0",
       "args": {
-        "edgeSourcePointX": 104.0380859375,
-        "edgeSourcePointY": 170,
-        "edgeTargetPointX": 210,
-        "edgeTargetPointY": 216.83735718347722
+        "edgeSourcePointX": 649.1187565969226,
+        "edgeSourcePointY": 151.5069408821965,
+        "edgeTargetPointX": 900,
+        "edgeTargetPointY": 84.70617296791305
       },
       "children": [
         {
@@ -1118,8 +1152,49 @@
             "x": 0,
             "y": 0
           },
-          "id": "conditionalEdge1_condition",
-          "text": "if newitem.amount > 100",
+          "id": "conditionalEdgeBrew_condition",
+          "text": "if Beans.amount >= 20",
+          "edgePlacement": {
+            "position": 0.5,
+            "side": "on",
+            "rotate": false,
+            "offset": 0
+          },
+          "size": {
+            "width": 230,
+            "height": 22
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "cssClasses": [
+        "conditional"
+      ],
+      "type": "edge:conditional",
+      "routingPoints": [],
+      "id": "conditionalEdgeRefill",
+      "sourceId": "beansDecision",
+      "targetId": "refillBeans",
+      "condition": "if Beans.amount < 20",
+      "itemId": "coffeeInventory_item0",
+      "args": {
+        "edgeSourcePointX": 649.0579377540527,
+        "edgeSourcePointY": 158.555868072208,
+        "edgeTargetPointX": 911.4166666666666,
+        "edgeTargetPointY": 230
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "label:monaco",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "conditionalEdgeRefill_condition",
+          "text": "if Beans.amount < 20",
           "edgePlacement": {
             "position": 0.5,
             "side": "on",
