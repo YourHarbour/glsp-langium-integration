@@ -24,7 +24,7 @@ import {
     getDefaultMapping
 } from '@eclipse-glsp/server';
 import { injectable } from 'inversify';
-import { ActivityNode, Category, ConditionalEdge, InventoryNode, TaskNode } from './graph-extension';
+import { ActivityNode, Category, ConditionalEdge, TaskNode } from './graph-extension';
 import { ModelTypes as types } from './util/model-types';
 
 @injectable()
@@ -41,11 +41,9 @@ export class WorkflowDiagramConfiguration implements DiagramConfiguration {
         mapping.set(types.TASK, TaskNode);
         mapping.set(types.CATEGORY, Category);
         mapping.set(types.STRUCTURE, GCompartment);
-        mapping.set(types.INVENTORY_NODE, InventoryNode);
         mapping.set(types.CONDITIONAL_EDGE, ConditionalEdge);
         mapping.set(types.LABEL_MONACO, GLabel);
-        mapping.set(types.LABEL_INVENTORY_NAME, GLabel);
-        mapping.set(types.LABEL_INVENTORY_AMOUNT, GLabel);
+        mapping.set(types.LABEL_VARIABLE, GLabel);
         return mapping;
     }
 
@@ -60,9 +58,7 @@ export class WorkflowDiagramConfiguration implements DiagramConfiguration {
             createDefaultShapeTypeHint({
                 elementTypeId: types.CATEGORY,
                 containableElementTypeIds: [types.TASK, types.ACTIVITY_NODE, types.CATEGORY]
-            }),
-            // not resizable: the table sizes itself based on its rows
-            createDefaultShapeTypeHint({ elementTypeId: types.INVENTORY_NODE, reparentable: false, resizable: false })
+            })
         ];
     }
 

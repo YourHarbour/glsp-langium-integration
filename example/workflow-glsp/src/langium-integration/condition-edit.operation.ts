@@ -11,8 +11,8 @@ export interface ApplyConditionEditOperation extends Operation {
     elementId: string;
     /** The new condition text */
     text: string;
-    /** Id of the inventory item referenced by the condition, if it could be resolved by Langium */
-    itemId?: string;
+    /** Id of the task node providing the referenced variable, if it could be resolved by Langium */
+    variableId?: string;
 }
 
 export namespace ApplyConditionEditOperation {
@@ -22,7 +22,7 @@ export namespace ApplyConditionEditOperation {
         return Operation.hasKind(object, KIND);
     }
 
-    export function create(options: { elementId: string; text: string; itemId?: string }): ApplyConditionEditOperation {
+    export function create(options: { elementId: string; text: string; variableId?: string }): ApplyConditionEditOperation {
         return {
             kind: KIND,
             isOperation: true,

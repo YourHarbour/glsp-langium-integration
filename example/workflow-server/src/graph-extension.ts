@@ -47,6 +47,10 @@ export class TaskNode extends GNode {
     duration: number;
     taskType: string;
     references: string;
+    /** Name of the variable this task provides to downstream conditional edges, e.g. `water` */
+    variable?: string;
+    /** Name of the property that can be inspected within {@link variable}, e.g. `level` (declared as `water:level`) */
+    property?: string;
 
     static override builder(): TaskNodeBuilder {
         return new TaskNodeBuilder(TaskNode).layout('vbox').addArgs(ArgsUtil.cornerRadius(5)).addCssClass('task');
@@ -74,13 +78,35 @@ export class TaskNodeBuilder<T extends TaskNode = TaskNode> extends GNodeBuilder
         return this;
     }
 
+    variable(variable?: string, property?: string): this {
+        this.proxy.variable = variable;
+        this.proxy.property = property;
+        return this;
+    }
+
     children(): this {
         return this;
     }
 
     override build(): T {
-        this.layout('hbox').addLayoutOption('paddingRight', 10).add(this.createCompartmentIcon()).add(this.createCompartmentHeader());
-        return super.build();
+        // The task is a vertical stack of two sections: the header (icon + name) on top and,
+        // if the task provides a variable, its declaration (`water:level`) below. The separator
+        // line between the sections is drawn by the client's TaskNodeView.
+        this.layout('vbox').addLayoutOptions({ vGap: 6 }).add(this.createHeaderCompartment());
+        const node = super.build();
+        setTaskVariable(node, node.variable, node.property);
+        return node;
+    }
+
+    protected createHeaderCompartment(): GCompartment {
+        return GCompartment.builder()
+            .type(ModelTypes.COMP_HEADER)
+            .id(this.proxy.id + '_header')
+            .layout('hbox')
+            .addLayoutOptions({ paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 10 })
+            .add(this.createCompartmentIcon())
+            .add(this.createCompartmentHeader())
+            .build();
     }
 
     protected createCompartmentHeader(): GLabel {
@@ -99,6 +125,37 @@ export class TaskNodeBuilder<T extends TaskNode = TaskNode> extends GNodeBuilder
     }
 }
 
+/** Parses a variable declaration of the form `water:level` (identifier `:` identifier) */
+export function parseVariableDeclaration(text: string): { variable: string; property: string } | undefined {
+    const match = text.trim().match(/^([_a-zA-Z][\w_]*)\s*:\s*([_a-zA-Z][\w_]*)$/);
+    return match ? { variable: match[1], property: match[2] } : undefined;
+}
+
+/**
+ * Sets (or clears, if `variable`/`property` are empty/undefined) the variable provided by the
+ * given task and keeps the corresponding editable `label:variable` child - the lower section of
+ * the task node, showing the declaration `water:level` - in sync. The label is what makes the
+ * variable visible on the diagram and editable via double-click.
+ */
+export function setTaskVariable(task: TaskNode, variable?: string, property?: string): void {
+    const name = variable?.trim();
+    const propertyName = property?.trim();
+    const provides = !!name && !!propertyName;
+    task.variable = provides ? name : undefined;
+    task.property = provides ? propertyName : undefined;
+    task.children = task.children.filter(child => child.type !== ModelTypes.LABEL_VARIABLE);
+    if (task.variable && task.property) {
+        const label = new GLabelBuilder(GLabel)
+            .type(ModelTypes.LABEL_VARIABLE)
+            .id(`${task.id}_variable`)
+            .text(`${task.variable}:${task.property}`)
+            .addCssClass('variable')
+            .build();
+        label.parent = task;
+        task.children.push(label);
+    }
+}
+
 export class WeightedEdge extends GEdge {
     probability?: string;
 
@@ -114,138 +171,17 @@ export class WeightedEdgeBuilder<E extends WeightedEdge = WeightedEdge> extends 
     }
 }
 
-/** A single item of an {@link InventoryNode}, e.g. `Steel` with an amount of `120` */
-export interface InventoryItem {
-    id: string;
-    name: string;
-    amount: number;
-}
-
 /**
- * A node holding the available inventory items. It is rendered as a two-column table
- * (item name and amount) on the client. Its items can be referenced by the conditions
- * of {@link ConditionalEdge}s, e.g. `if Steel.amount > 100`.
- *
- * The name and amount cells of each row are editable {@link GLabel} children
- * (see {@link rebuildInventoryNode}); rows can be added and removed via the
- * `addInventoryItem`/`removeInventoryItem` operations.
- */
-export class InventoryNode extends GNode {
-    items: InventoryItem[] = [];
-
-    static override builder(): InventoryNodeBuilder {
-        return new InventoryNodeBuilder(InventoryNode).type(ModelTypes.INVENTORY_NODE).addCssClass('inventory');
-    }
-}
-
-/**
- * Layout constants of the inventory table.
- *
- * MUST be kept in sync with the values used by the `InventoryNodeView` in
- * `workflow-glsp/src/inventory-views.tsx`.
- */
-export namespace InventoryNodeLayout {
-    export const TITLE_HEIGHT = 22;
-    export const HEADER_HEIGHT = 18;
-    export const ROW_HEIGHT = 18;
-    export const FOOTER_HEIGHT = 18;
-    export const DEFAULT_WIDTH = 160;
-    /** Relative position of the separator between the "Item" and the "Amount" column */
-    export const COLUMN_RATIO = 0.62;
-    /** Horizontal padding of the text inside a cell */
-    export const CELL_PADDING = 6;
-    /** Horizontal space reserved at the right edge of a row for the delete button */
-    export const DELETE_BUTTON_ZONE = 16;
-
-    export function tableTop(): number {
-        return TITLE_HEIGHT + HEADER_HEIGHT;
-    }
-
-    export function height(itemCount: number): number {
-        return tableTop() + itemCount * ROW_HEIGHT + FOOTER_HEIGHT;
-    }
-}
-
-/** Creates an item id that is unique within the diagram (item ids are derived from the generated node id) */
-export function createInventoryItemId(node: InventoryNode): string {
-    let index = node.items.length;
-    while (node.items.some(item => item.id === `${node.id}_item${index}`)) {
-        index++;
-    }
-    return `${node.id}_item${index}`;
-}
-
-/** Creates a default item name (`Item0`, `Item1`, ...) that is unique within the given node */
-export function createInventoryItemName(node: InventoryNode): string {
-    let index = node.items.length;
-    while (node.items.some(item => item.name === `Item${index}`)) {
-        index++;
-    }
-    return `Item${index}`;
-}
-
-/**
- * (Re-)creates the editable cell labels of the inventory table from the node's items and
- * recomputes the node size. Must be called whenever the items of the node change.
- */
-export function rebuildInventoryNode(node: InventoryNode): void {
-    const width = node.size?.width ?? InventoryNodeLayout.DEFAULT_WIDTH;
-    node.size = { width, height: InventoryNodeLayout.height(node.items.length) };
-
-    const columnX = Math.round(width * InventoryNodeLayout.COLUMN_RATIO);
-    const cellY = (index: number): number => InventoryNodeLayout.tableTop() + index * InventoryNodeLayout.ROW_HEIGHT + 2;
-    const cellHeight = InventoryNodeLayout.ROW_HEIGHT - 4;
-
-    node.children = node.items.flatMap((item, index) => [
-        new GLabelBuilder(GLabel)
-            .type(ModelTypes.LABEL_INVENTORY_NAME)
-            .id(`${item.id}_name`)
-            .text(item.name)
-            .position(InventoryNodeLayout.CELL_PADDING, cellY(index))
-            .size(columnX - 2 * InventoryNodeLayout.CELL_PADDING, cellHeight)
-            .build(),
-        new GLabelBuilder(GLabel)
-            .type(ModelTypes.LABEL_INVENTORY_AMOUNT)
-            .id(`${item.id}_amount`)
-            .text(String(item.amount))
-            .position(columnX + InventoryNodeLayout.CELL_PADDING, cellY(index))
-            .size(
-                width - columnX - 2 * InventoryNodeLayout.CELL_PADDING - InventoryNodeLayout.DELETE_BUTTON_ZONE,
-                cellHeight
-            )
-            .build()
-    ]);
-    node.children.forEach(child => (child.parent = node));
-}
-
-export class InventoryNodeBuilder<T extends InventoryNode = InventoryNode> extends GNodeBuilder<T> {
-    items(items: InventoryItem[]): this {
-        this.proxy.items = items;
-        return this;
-    }
-
-    addItem(name: string, amount: number): this {
-        this.proxy.items = [...(this.proxy.items ?? []), { id: createInventoryItemId(this.proxy), name, amount }];
-        return this;
-    }
-
-    override build(): T {
-        const node = super.build();
-        rebuildInventoryNode(node);
-        return node;
-    }
-}
-
-/**
- * An edge that is only taken if its condition over the inventory items holds,
- * e.g. `if Steel.amount > 100`. The condition is edited on the client via an
- * embedded Monaco editor backed by Langium; the editor is attached to the
- * `label:monaco` child of this edge.
+ * An edge that is only taken if its condition over an upstream task variable holds,
+ * e.g. `if water >= 50`. The condition is edited on the client via an embedded
+ * Monaco editor backed by Langium; the editor is attached to the `label:monaco`
+ * child of this edge. The condition may only reference variables provided by
+ * tasks upstream of the edge.
  */
 export class ConditionalEdge extends GEdge {
     condition: string;
-    /** Id of the inventory item referenced by the condition, if resolved */
-    itemId?: string;
+    /** Id of the task node providing the variable referenced by the condition, if resolved */
+    variableId?: string;
 
     static override builder(): ConditionalEdgeBuilder {
         return new ConditionalEdgeBuilder(ConditionalEdge).type(ModelTypes.CONDITIONAL_EDGE).addCssClass('conditional');
@@ -255,6 +191,11 @@ export class ConditionalEdge extends GEdge {
 export class ConditionalEdgeBuilder<E extends ConditionalEdge = ConditionalEdge> extends GEdgeBuilder<E> {
     condition(condition: string): this {
         this.proxy.condition = condition;
+        return this;
+    }
+
+    variableId(variableId?: string): this {
+        this.proxy.variableId = variableId;
         return this;
     }
 

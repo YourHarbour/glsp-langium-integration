@@ -23,6 +23,7 @@ export class TaskEditContextActionProvider implements ContextActionsProvider {
     static readonly DURATION_PREFIX = 'duration:';
     static readonly TYPE_PREFIX = 'type:';
     static readonly TASK_PREFIX = 'task:';
+    static readonly VARIABLE_PREFIX = 'variable:';
 
     readonly contextId = 'task-editor';
 
@@ -44,7 +45,10 @@ export class TaskEditContextActionProvider implements ContextActionsProvider {
             ];
         }
 
-        if (text.startsWith(TaskEditContextActionProvider.DURATION_PREFIX)) {
+        if (
+            text.startsWith(TaskEditContextActionProvider.DURATION_PREFIX) ||
+            text.startsWith(TaskEditContextActionProvider.VARIABLE_PREFIX)
+        ) {
             return [];
         }
 
@@ -56,6 +60,13 @@ export class TaskEditContextActionProvider implements ContextActionsProvider {
                 label: 'duration:',
                 actions: [],
                 text: `${TaskEditContextActionProvider.DURATION_PREFIX}${duration ?? 0}`
+            },
+            <SetAutocompleteValueAction>{
+                label: 'variable:',
+                actions: [],
+                text: `${TaskEditContextActionProvider.VARIABLE_PREFIX}${
+                    taskNode.variable && taskNode.property ? `${taskNode.variable}:${taskNode.property}` : ''
+                }`
             }
         ];
     }

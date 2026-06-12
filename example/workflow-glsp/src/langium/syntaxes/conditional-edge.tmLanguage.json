@@ -10,7 +10,7 @@
     },
     {
       "name": "keyword.control.conditional-edge",
-      "match": "\\b(amount|if)\\b"
+      "match": "\\b(if)\\b"
     }
   ],
   "repository": {

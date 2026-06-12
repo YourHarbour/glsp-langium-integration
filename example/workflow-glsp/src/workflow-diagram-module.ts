@@ -51,13 +51,12 @@ import { Container } from 'inversify';
 import 'sprotty/css/edit-label.css';
 import '../css/diagram.css';
 import { taskEditorModule } from './direct-task-editing/task-editor-module.js';
-import { InventoryNodeView } from './inventory-views.js';
 import { workflowLangiumModule } from './langium-integration/workflow-langium-module.js';
 import { WorkflowLangiumTypes } from './langium-integration/workflow-langium-types.js';
-import { BranchingNode, CategoryNode, ConditionalEdge, Icon, InventoryNode, SynchronizationNode, TaskNode, WeightedEdge } from './model.js';
+import { BranchingNode, CategoryNode, ConditionalEdge, Icon, SynchronizationNode, TaskNode, WeightedEdge } from './model.js';
 import { WorkflowSnapper } from './workflow-snapper.js';
 import { WorkflowStartup } from './workflow-startup.js';
-import { IconView, WorkflowEdgeView } from './workflow-views.js';
+import { IconView, TaskNodeView, WorkflowEdgeView } from './workflow-views.js';
 
 export const workflowDiagramModule = new FeatureModule(
     (bind, unbind, isBound, rebind) => {
@@ -69,8 +68,8 @@ export const workflowDiagramModule = new FeatureModule(
         bindAsService(context, TYPES.IContextMenuItemProvider, DeleteElementContextMenuItemProvider);
 
         configureDefaultModelElements(context);
-        configureModelElement(context, 'task:automated', TaskNode, RoundedCornerNodeView);
-        configureModelElement(context, 'task:manual', TaskNode, RoundedCornerNodeView);
+        configureModelElement(context, 'task:automated', TaskNode, TaskNodeView);
+        configureModelElement(context, 'task:manual', TaskNode, TaskNodeView);
         configureModelElement(context, 'label:heading', GLabel, GLabelView, { enable: [editLabelFeature] });
         configureModelElement(context, 'comp:comp', GCompartment, GCompartmentView);
         configureModelElement(context, 'label:icon', GLabel, GLabelView);
@@ -84,11 +83,9 @@ export const workflowDiagramModule = new FeatureModule(
         overrideModelElement(context, DefaultTypes.GRAPH, GGraph, GLSPProjectionView);
         configureModelElement(context, 'category', CategoryNode, RoundedCornerNodeView);
         configureModelElement(context, 'struct', GCompartment, StructureCompartmentView);
-        configureModelElement(context, WorkflowLangiumTypes.INVENTORY_NODE, InventoryNode, InventoryNodeView);
         configureModelElement(context, WorkflowLangiumTypes.CONDITIONAL_EDGE, ConditionalEdge, WorkflowEdgeView);
         configureModelElement(context, WorkflowLangiumTypes.MONACO_LABEL, GLabel, MonacoLabelView);
-        configureModelElement(context, WorkflowLangiumTypes.LABEL_INVENTORY_NAME, GLabel, GLabelView, { enable: [editLabelFeature] });
-        configureModelElement(context, WorkflowLangiumTypes.LABEL_INVENTORY_AMOUNT, GLabel, GLabelView, { enable: [editLabelFeature] });
+        configureModelElement(context, WorkflowLangiumTypes.LABEL_VARIABLE, GLabel, GLabelView, { enable: [editLabelFeature] });
 
         bind<IHelperLineOptions>(TYPES.IHelperLineOptions).toDynamicValue(ctx => {
             const options: IHelperLineOptions = {};

@@ -19,6 +19,7 @@ import {
     GChildElement,
     GEdge,
     GModelElement,
+    GParentElement,
     GShapeElement,
     LayoutContainer,
     Nameable,
@@ -40,6 +41,23 @@ import {
     withEditLabelFeature
 } from '@eclipse-glsp/client';
 
+/**
+ * Finds the editable heading label of a node, also looking into nested compartments
+ * (the task name label lives inside the `comp:header` compartment of the node).
+ */
+function findEditableHeading(element: GParentElement): (GChildElement & EditableLabel) | undefined {
+    for (const child of element.children) {
+        if (child.type === 'label:heading' && isEditableLabel(child)) {
+            return child;
+        }
+        const nested = findEditableHeading(child);
+        if (nested) {
+            return nested;
+        }
+    }
+    return undefined;
+}
+
 export class TaskNode extends RectangularNode implements Nameable, WithEditableLabel {
     static override readonly DEFAULT_FEATURES = [
         connectableFeature,
@@ -57,13 +75,13 @@ export class TaskNode extends RectangularNode implements Nameable, WithEditableL
     duration?: number;
     taskType?: string;
     reference?: string;
+    /** Name of the variable this task provides to downstream conditional edges, e.g. `water` */
+    variable?: string;
+    /** Name of the property that can be inspected within {@link variable}, e.g. `level` (shown as `water:level`) */
+    property?: string;
 
     get editableLabel(): (GChildElement & EditableLabel) | undefined {
-        const label = this.children.find(element => element.type === 'label:heading');
-        if (label && isEditableLabel(label)) {
-            return label;
-        }
-        return undefined;
+        return findEditableHeading(this);
     }
 
     get name(): string {
@@ -133,56 +151,18 @@ export class CategoryNode extends RectangularNode implements Nameable, WithEdita
     name = '';
 
     get editableLabel(): (GChildElement & EditableLabel) | undefined {
-        const label = this.children.find(element => element.type === 'label:heading');
-        if (label && isEditableLabel(label)) {
-            return label;
-        }
-        return undefined;
+        return findEditableHeading(this);
     }
 }
 
-/** A single item of an {@link InventoryNode}, e.g. `Steel` with an amount of `120` */
-export interface InventoryItem {
-    id: string;
-    name: string;
-    amount: number;
-}
-
 /**
- * A node holding the available inventory items. It is rendered as a two-column table
- * (item name and amount) by the `InventoryNodeView`. Its items can be referenced by
- * the conditions of {@link ConditionalEdge}s.
- */
-export class InventoryNode extends RectangularNode {
-    static override readonly DEFAULT_FEATURES = [
-        deletableFeature,
-        selectFeature,
-        boundsFeature,
-        moveFeature,
-        layoutContainerFeature,
-        fadeFeature,
-        hoverFeedbackFeature,
-        popupFeature
-    ];
-
-    items: InventoryItem[] = [];
-}
-
-export function isInventoryNode(element: GModelElement): element is InventoryNode {
-    return element instanceof InventoryNode;
-}
-
-/**
- * An edge that is only taken if its condition over the inventory items holds,
- * e.g. `if Steel.amount > 100`. The condition is edited via an embedded Monaco
- * editor (the `label:monaco` child of the edge) backed by Langium.
+ * An edge that is only taken if its condition over an upstream task variable holds,
+ * e.g. `if water >= 50`. The condition is edited via an embedded Monaco editor
+ * (the `label:monaco` child of the edge) backed by Langium; it may only reference
+ * variables provided by tasks upstream of the edge.
  */
 export class ConditionalEdge extends GEdge {
     condition?: string;
-    /** Id of the inventory item referenced by the condition, if resolved */
-    itemId?: string;
-}
-
-export function isConditionalEdge(element: GModelElement): element is ConditionalEdge {
-    return element instanceof ConditionalEdge;
+    /** Id of the task node providing the variable referenced by the condition, if resolved */
+    variableId?: string;
 }

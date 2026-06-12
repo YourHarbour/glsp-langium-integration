@@ -8,7 +8,7 @@ import { injectable } from 'inversify';
 @injectable()
 export class WorkflowMonacoEditorSizeService extends MonacoEditorSizeService {
     public override getWidth(id: string): string {
-        return '230px';
+        return '200px';
     }
 
     public override getHeight(id: string): string {

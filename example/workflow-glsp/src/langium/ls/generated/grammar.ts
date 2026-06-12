@@ -44,7 +44,7 @@ export const ConditionalEdgeDSLGrammar = (): Grammar => loadedConditionalEdgeDSL
           },
           {
             "$type": "Assignment",
-            "feature": "item",
+            "feature": "variable",
             "operator": "=",
             "terminal": {
               "$type": "CrossReference",
@@ -67,8 +67,24 @@ export const ConditionalEdgeDSLGrammar = (): Grammar => loadedConditionalEdgeDSL
             "value": "."
           },
           {
-            "$type": "Keyword",
-            "value": "amount"
+            "$type": "Assignment",
+            "feature": "property",
+            "operator": "=",
+            "terminal": {
+              "$type": "CrossReference",
+              "type": {
+                "$ref": "#/interfaces@1"
+              },
+              "terminal": {
+                "$type": "RuleCall",
+                "rule": {
+                  "$ref": "#/rules@2"
+                },
+                "arguments": []
+              },
+              "deprecatedSyntax": false,
+              "isMulti": false
+            }
           },
           {
             "$type": "Assignment",
@@ -185,7 +201,23 @@ export const ConditionalEdgeDSLGrammar = (): Grammar => loadedConditionalEdgeDSL
   "interfaces": [
     {
       "$type": "Interface",
-      "name": "InventoryItem",
+      "name": "Variable",
+      "attributes": [
+        {
+          "$type": "TypeAttribute",
+          "name": "name",
+          "type": {
+            "$type": "SimpleType",
+            "primitiveType": "string"
+          },
+          "isOptional": false
+        }
+      ],
+      "superTypes": []
+    },
+    {
+      "$type": "Interface",
+      "name": "Property",
       "attributes": [
         {
           "$type": "TypeAttribute",

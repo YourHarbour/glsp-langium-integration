@@ -39,8 +39,9 @@ export class WorkflowPopupFactory implements PopupModelFactory {
     }
 
     protected generateBody(task: TaskNode): string {
-        return `Type: ${task.taskType} ${NL}
+        const body = `Type: ${task.taskType} ${NL}
             Duration: ${task.duration} ${NL}
             Reference: ${task.references} ${NL}`;
+        return task.variable && task.property ? `${body} Provides: ${task.variable}:${task.property} ${NL}` : body;
     }
 }

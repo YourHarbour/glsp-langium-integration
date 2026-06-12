@@ -31,8 +31,8 @@ export interface ApplyConditionEditOperation extends Operation {
     /** The new condition text */
     text: string;
 
-    /** Id of the inventory item referenced by the condition, if it could be resolved by Langium */
-    itemId?: string;
+    /** Id of the task node providing the variable referenced by the condition, if it could be resolved by Langium */
+    variableId?: string;
 }
 
 export namespace ApplyConditionEditOperation {
@@ -42,7 +42,7 @@ export namespace ApplyConditionEditOperation {
         return Action.hasKind(object, KIND) && hasStringProp(object, 'elementId') && hasStringProp(object, 'text');
     }
 
-    export function create(options: { elementId: string; text: string; itemId?: string }): ApplyConditionEditOperation {
+    export function create(options: { elementId: string; text: string; variableId?: string }): ApplyConditionEditOperation {
         return {
             kind: KIND,
             isOperation: true,
@@ -53,8 +53,8 @@ export namespace ApplyConditionEditOperation {
 
 /**
  * Applies a condition edit to the {@link ConditionalEdge}: the condition text (and the id of
- * the referenced inventory item) are stored on the edge and the text of the monaco label is
- * updated, which is the text the embedded Monaco editors are initialized with.
+ * the task providing the referenced variable) are stored on the edge and the text of the monaco
+ * label is updated, which is the text the embedded Monaco editors are initialized with.
  */
 @injectable()
 export class ApplyConditionEditHandler extends GModelOperationHandler {
@@ -66,15 +66,15 @@ export class ApplyConditionEditHandler extends GModelOperationHandler {
             `Cannot find conditional edge with id '${operation.elementId}'`
         );
         const newText = operation.text ?? '';
-        if (edge.condition === newText && edge.itemId === operation.itemId) {
+        if (edge.condition === newText && edge.variableId === operation.variableId) {
             return undefined;
         }
-        return this.commandOf(() => this.applyConditionEdit(edge, newText, operation.itemId));
+        return this.commandOf(() => this.applyConditionEdit(edge, newText, operation.variableId));
     }
 
-    protected applyConditionEdit(edge: ConditionalEdge, text: string, itemId?: string): void {
+    protected applyConditionEdit(edge: ConditionalEdge, text: string, variableId?: string): void {
         edge.condition = text;
-        edge.itemId = itemId;
+        edge.variableId = variableId;
         const label = edge.children.find(child => child.type === ModelTypes.LABEL_MONACO);
         if (label instanceof GLabel) {
             label.text = text;

@@ -15,8 +15,6 @@
  ********************************************************************************/
 export * from './direct-task-editing/direct-task-editor.js';
 export * from './direct-task-editing/task-editor-module.js';
-export * from './inventory-operations.js';
-export * from './inventory-views.js';
 export * from './langium-integration/condition-edit.operation.js';
 export * from './langium-integration/langium-worker.factory.js';
 export * from './langium-integration/model-update.handler.js';
@@ -25,6 +23,7 @@ export * from './langium-integration/monaco-editor-size.service.js';
 export * from './langium-integration/monaco-submit.service.js';
 export * from './langium-integration/monaco-wrapper-config.service.js';
 export * from './langium-integration/scoping-information.handler.js';
+export * from './langium-integration/variable-scope.js';
 export * from './langium-integration/workflow-langium-module.js';
 export * from './langium-integration/workflow-langium-types.js';
 export * from './model.js';

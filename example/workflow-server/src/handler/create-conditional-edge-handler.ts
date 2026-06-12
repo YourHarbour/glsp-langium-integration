@@ -15,13 +15,16 @@
  ********************************************************************************/
 import { GEdge, GModelCreateEdgeOperationHandler, GModelElement } from '@eclipse-glsp/server';
 import { injectable } from 'inversify';
-import { ConditionalEdge, InventoryNode } from '../graph-extension';
+import { ConditionalEdge } from '../graph-extension';
 import { ModelTypes } from '../util/model-types';
+import { findNearestUpstreamVariable } from '../util/variable-scope';
 
 /**
- * Creates a new conditional edge. The initial condition references the first item
- * of the first inventory node on the diagram (if present), so that the default text
- * is valid right away and demonstrates the expected syntax.
+ * Creates a new conditional edge. The initial condition references the variable of the
+ * nearest upstream task of the new edge's source (if there is one), so that the default
+ * text is in scope and valid right away. If no upstream task provides a variable, the
+ * placeholder condition is immediately flagged by the Langium validation — demonstrating
+ * that conditions can only use variables provided upstream.
  */
 @injectable()
 export class CreateConditionalEdgeHandler extends GModelCreateEdgeOperationHandler {
@@ -29,16 +32,12 @@ export class CreateConditionalEdgeHandler extends GModelCreateEdgeOperationHandl
     label = 'Conditional edge';
 
     createEdge(source: GModelElement, target: GModelElement): GEdge | undefined {
+        const variable = findNearestUpstreamVariable(this.modelState.index, source.id);
         return ConditionalEdge.builder()
             .sourceId(source.id)
             .targetId(target.id)
-            .condition(this.defaultCondition())
+            .condition(variable ? `if ${variable.name}.${variable.property} > 0` : 'if input.value > 0')
+            .variableId(variable?.nodeId)
             .build();
-    }
-
-    protected defaultCondition(): string {
-        const inventoryNode = this.modelState.index.getAllByClass(InventoryNode)[0];
-        const firstItem = inventoryNode?.items?.[0];
-        return firstItem ? `if ${firstItem.name}.amount > 100` : 'if Item.amount > 100';
     }
 }

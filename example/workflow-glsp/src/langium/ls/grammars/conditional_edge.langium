@@ -6,4 +6,4 @@ entry Model:
     condition=Condition;
 
 Condition:
-    'if' item=[InventoryItem:ID] '.' 'amount' operator=('>' | '<' | '>=' | '<=' | '==' | '!=') value=INT;
+    'if' variable=[Variable:ID] '.' property=[Property:ID] operator=('>' | '<' | '>=' | '<=' | '==' | '!=') value=INT;

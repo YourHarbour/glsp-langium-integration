@@ -1,4 +1,8 @@
-interface InventoryItem {
+interface Variable {
+    name: string
+}
+
+interface Property {
     name: string
 }
 

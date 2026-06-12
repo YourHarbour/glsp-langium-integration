@@ -55,7 +55,7 @@ export interface EditTaskOperation extends Operation {
     /**
      * The feature that is to be updated
      */
-    feature: 'duration' | 'taskType';
+    feature: 'duration' | 'taskType' | 'variable';
 
     /**
      * The new feature value
@@ -75,7 +75,7 @@ export namespace EditTaskOperation {
         );
     }
 
-    export function create(options: { taskId: string; feature: 'duration' | 'taskType'; value: string }): EditTaskOperation {
+    export function create(options: { taskId: string; feature: 'duration' | 'taskType' | 'variable'; value: string }): EditTaskOperation {
         return {
             kind: KIND,
             isOperation: true,
@@ -195,6 +195,10 @@ export class TaskEditor extends GLSPAbstractUIExtension {
         } else if (input.startsWith('taskType:')) {
             const value = input.substring('taskType:'.length);
             const action = EditTaskOperation.create({ taskId: this.task.id, feature: 'taskType', value });
+            this.actionDispatcher.dispatch(action);
+        } else if (input.startsWith('variable:')) {
+            const value = input.substring('variable:'.length).trim();
+            const action = EditTaskOperation.create({ taskId: this.task.id, feature: 'variable', value });
             this.actionDispatcher.dispatch(action);
         } else {
             throw new Error('Unsupported Task Editing: ' + input);

@@ -15,6 +15,7 @@
  ********************************************************************************/
 import { ContextEditValidator, RequestEditValidationAction, ValidationStatus } from '@eclipse-glsp/server';
 import { injectable } from 'inversify';
+import { parseVariableDeclaration } from '../graph-extension';
 import { TaskEditContextActionProvider } from './task-edit-context-provider';
 
 @injectable()
@@ -38,6 +39,24 @@ export class TaskEditValidator implements ContextEditValidator {
                     severity: ValidationStatus.Severity.ERROR,
                     message: `'Type of task can only be manual or automatic. You entered '${typeString}'.`
                 };
+            }
+        } else if (text.startsWith(TaskEditContextActionProvider.VARIABLE_PREFIX)) {
+            const value = text.substring(TaskEditContextActionProvider.VARIABLE_PREFIX.length).trim();
+            // an empty declaration removes the variable from the task
+            if (value.length > 0) {
+                const declaration = parseVariableDeclaration(value);
+                if (!declaration) {
+                    return {
+                        severity: ValidationStatus.Severity.ERROR,
+                        message: `Variable declarations have the form '<variable>:<property>' (e.g. 'water:level'). You entered '${value}'.`
+                    };
+                }
+                if (declaration.variable === 'if' || declaration.property === 'if') {
+                    return {
+                        severity: ValidationStatus.Severity.ERROR,
+                        message: `'if' is a keyword of the condition language and cannot be used in a variable declaration.`
+                    };
+                }
             }
         }
         return ValidationStatus.NONE;

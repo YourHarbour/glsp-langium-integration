@@ -13,7 +13,7 @@ import { WorkflowLangiumScopingInformationHandler } from './scoping-information.
  * for the workflow example:
  * - the worker factory creating the Langium language server worker
  * - the Monaco editor management for the conditional edges (creation, sizing, submit handling)
- * - the generation of the scoping information (inventory items) and the validation trigger
+ * - the generation of the scoping information (upstream task variables per conditional edge) and the validation trigger
  *
  * The framework-level defaults are registered by the `GlspLangiumModule` of the
  * `glsp-langium-integration` package (see `initializeLangiumDiagramContainer`).

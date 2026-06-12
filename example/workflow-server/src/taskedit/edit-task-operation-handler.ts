@@ -16,7 +16,7 @@
 
 import { Action, Command, getOrThrow, GModelOperationHandler, hasStringProp, MaybePromise, Operation } from '@eclipse-glsp/server';
 import { injectable } from 'inversify';
-import { TaskNode } from '../graph-extension';
+import { parseVariableDeclaration, setTaskVariable, TaskNode } from '../graph-extension';
 import { ModelTypes } from '../util/model-types';
 /**
  * Is send from the {@link TaskEditor} to the GLSP server
@@ -33,7 +33,7 @@ export interface EditTaskOperation extends Operation {
     /**
      * The feature that is to be updated
      */
-    feature: 'duration' | 'taskType';
+    feature: 'duration' | 'taskType' | 'variable';
 
     /**
      * The new feature value
@@ -53,7 +53,7 @@ export namespace EditTaskOperation {
         );
     }
 
-    export function create(options: { taskId: string; feature: 'duration' | 'taskType'; value: string }): EditTaskOperation {
+    export function create(options: { taskId: string; feature: 'duration' | 'taskType' | 'variable'; value: string }): EditTaskOperation {
         return {
             kind: KIND,
             isOperation: true,
@@ -81,6 +81,15 @@ export class EditTaskOperationHandler extends GModelOperationHandler {
             case 'taskType': {
                 return task.taskType !== operation.value //
                     ? this.commandOf(() => this.editTaskType(task, operation.value))
+                    : undefined;
+            }
+            case 'variable': {
+                const declaration = parseVariableDeclaration(operation.value);
+                if (!declaration && operation.value.trim().length > 0) {
+                    throw new Error(`Could not edit task '${task.id}'. Invalid variable declaration: ${operation.value}`);
+                }
+                return task.variable !== declaration?.variable || task.property !== declaration?.property
+                    ? this.commandOf(() => setTaskVariable(task, declaration?.variable, declaration?.property))
                     : undefined;
             }
         }
@@ -111,6 +120,7 @@ export class EditTaskOperationHandler extends GModelOperationHandler {
             .type(type === 'automated' ? ModelTypes.AUTOMATED_TASK : ModelTypes.MANUAL_TASK)
             .taskType(type)
             .name(task.name)
+            .variable(task.variable, task.property)
             .addCssClass(type)
             .children()
             .build();

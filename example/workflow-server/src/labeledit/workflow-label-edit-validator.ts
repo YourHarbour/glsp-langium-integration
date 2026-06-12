@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2022-2023 STMicroelectronics and others.
+ * Copyright (c) 2022-2026 STMicroelectronics and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -15,13 +15,11 @@
  ********************************************************************************/
 import { GModelElement, LabelEditValidator, ModelState, ValidationStatus } from '@eclipse-glsp/server';
 import { inject, injectable } from 'inversify';
-import { InventoryNode, TaskNode } from '../graph-extension';
+import { parseVariableDeclaration, TaskNode } from '../graph-extension';
 import { ModelTypes } from '../util/model-types';
 
-/** Item names are referenced by the conditional edge grammar via its `ID` terminal, so they must be valid identifiers */
-const INVENTORY_NAME_PATTERN = /^[_a-zA-Z][\w_]*$/;
-/** Keywords of the conditional edge grammar that cannot be used as item names */
-const INVENTORY_NAME_KEYWORDS = ['if', 'amount'];
+/** Keywords of the conditional edge grammar that cannot be used as variable or property names */
+const VARIABLE_NAME_KEYWORDS = ['if'];
 
 @injectable()
 export class WorkflowLabelEditValidator implements LabelEditValidator {
@@ -29,11 +27,8 @@ export class WorkflowLabelEditValidator implements LabelEditValidator {
     protected modelState: ModelState;
 
     validate(label: string, element: GModelElement): ValidationStatus {
-        if (element.type === ModelTypes.LABEL_INVENTORY_NAME) {
-            return this.validateInventoryName(label, element);
-        }
-        if (element.type === ModelTypes.LABEL_INVENTORY_AMOUNT) {
-            return this.validateInventoryAmount(label);
+        if (element.type === ModelTypes.LABEL_VARIABLE) {
+            return this.validateVariableName(label, element);
         }
         if (label.length < 1) {
             return { severity: ValidationStatus.Severity.ERROR, message: 'Name must not be empty' };
@@ -49,33 +44,31 @@ export class WorkflowLabelEditValidator implements LabelEditValidator {
         return { severity: ValidationStatus.Severity.OK };
     }
 
-    protected validateInventoryName(label: string, element: GModelElement): ValidationStatus {
-        const name = label.trim();
-        if (!INVENTORY_NAME_PATTERN.test(name)) {
+    protected validateVariableName(label: string, element: GModelElement): ValidationStatus {
+        const text = label.trim();
+        if (text.length === 0) {
+            // an empty declaration removes the variable from the task
+            return { severity: ValidationStatus.Severity.OK };
+        }
+        const declaration = parseVariableDeclaration(text);
+        if (!declaration) {
             return {
                 severity: ValidationStatus.Severity.ERROR,
-                message: 'Item name must be an identifier (letters, digits and _, not starting with a digit)'
+                message: "Variable declarations have the form '<variable>:<property>' (e.g. 'water:level'), both valid identifiers"
             };
         }
-        if (INVENTORY_NAME_KEYWORDS.includes(name)) {
+        const keyword = [declaration.variable, declaration.property].find(name => VARIABLE_NAME_KEYWORDS.includes(name));
+        if (keyword) {
             return {
                 severity: ValidationStatus.Severity.ERROR,
-                message: `'${name}' is a keyword of the condition language and cannot be used as item name`
+                message: `'${keyword}' is a keyword of the condition language and cannot be used in a variable declaration`
             };
         }
-        const node = element.parent;
-        if (node instanceof InventoryNode) {
-            const hasDuplicate = node.items.some(item => item.name === name && `${item.id}_name` !== element.id);
-            if (hasDuplicate) {
-                return { severity: ValidationStatus.Severity.ERROR, message: 'Item name must be unique within the inventory' };
-            }
-        }
-        return { severity: ValidationStatus.Severity.OK };
-    }
-
-    protected validateInventoryAmount(label: string): ValidationStatus {
-        if (!/^\d+$/.test(label.trim())) {
-            return { severity: ValidationStatus.Severity.ERROR, message: 'Amount must be a non-negative integer' };
+        const hasDuplicate = this.modelState.index
+            .getAllByClass<TaskNode>(TaskNode)
+            .some(task => task.variable === declaration.variable && task.id !== element.parent?.id);
+        if (hasDuplicate) {
+            return { severity: ValidationStatus.Severity.WARNING, message: 'Another task already provides a variable with this name' };
         }
         return { severity: ValidationStatus.Severity.OK };
     }

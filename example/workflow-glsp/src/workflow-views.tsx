@@ -16,9 +16,11 @@
 /** @jsx svg */
 import {
     GEdge,
+    GShapeElement,
     Point,
     PolylineEdgeViewWithGapsOnIntersections,
     RenderingContext,
+    RoundedCornerNodeView,
     ShapeView,
     angleOfPoint,
     findParentByFeature,
@@ -28,8 +30,27 @@ import {
 } from '@eclipse-glsp/client';
 import { injectable } from 'inversify';
 import { VNode } from 'snabbdom';
-import { Icon, isTaskNode } from './model.js';
+import { WorkflowLangiumTypes } from './langium-integration/workflow-langium-types.js';
+import { Icon, TaskNode, isTaskNode } from './model.js';
 import { svg } from './sprotty-jsx.js';
+
+/**
+ * Renders a task node. If the task provides a variable, the node consists of two sections
+ * (the header with icon and name on top, the variable declaration `water:level` below) and
+ * this view draws the separator line between them, right above the variable label.
+ */
+@injectable()
+export class TaskNodeView extends RoundedCornerNodeView {
+    override render(node: Readonly<TaskNode>, context: RenderingContext): VNode | undefined {
+        const vnode = super.render(node, context);
+        const variableLabel = node.children.find(child => child.type === WorkflowLangiumTypes.LABEL_VARIABLE);
+        if (vnode?.children && variableLabel instanceof GShapeElement && variableLabel.position.y > 0) {
+            const y = variableLabel.position.y - 3;
+            vnode.children.push(<line class-task-divider={true} x1={0} y1={y} x2={node.bounds.width} y2={y} /> as VNode);
+        }
+        return vnode;
+    }
+}
 
 @injectable()
 export class WorkflowEdgeView extends PolylineEdgeViewWithGapsOnIntersections {

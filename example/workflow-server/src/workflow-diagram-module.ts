@@ -37,22 +37,17 @@ import {
 } from '@eclipse-glsp/server';
 import { injectable } from 'inversify';
 import { ApplyConditionEditHandler } from './conditionedit/apply-condition-edit-handler';
-import {
-    AddInventoryItemHandler,
-    InventoryAwareApplyLabelEditOperationHandler,
-    RemoveInventoryItemHandler
-} from './inventoryedit/inventory-edit-handlers';
 import { CreateAutomatedTaskHandler } from './handler/create-automated-task-handler';
 import { CreateCategoryHandler } from './handler/create-category-handler';
 import { CreateConditionalEdgeHandler } from './handler/create-conditional-edge-handler';
 import { CreateDecisionNodeHandler } from './handler/create-decision-node-handler';
 import { CreateEdgeHandler } from './handler/create-edge-handler';
 import { CreateForkNodeHandler } from './handler/create-fork-node-handler';
-import { CreateInventoryNodeHandler } from './handler/create-inventory-node-handler';
 import { CreateJoinNodeHandler } from './handler/create-join-node-handler';
 import { CreateManualTaskHandler } from './handler/create-manual-task-handler';
 import { CreateMergeNodeHandler } from './handler/create-merge-node-handler';
 import { CreateWeightedEdgeHandler } from './handler/create-weighted-edge-handler';
+import { VariableAwareApplyLabelEditOperationHandler } from './labeledit/apply-variable-label-edit-handler';
 import { WorkflowLabelEditValidator } from './labeledit/workflow-label-edit-validator';
 import { WorkflowModelValidator } from './marker/workflow-model-validator';
 import { WorkflowNavigationTargetResolver } from './model/workflow-navigation-target-resolver';
@@ -97,14 +92,11 @@ export class WorkflowDiagramModule extends GModelDiagramModule {
         binding.add(CreateMergeNodeHandler);
         binding.add(CreateDecisionNodeHandler);
         binding.add(CreateCategoryHandler);
-        binding.add(CreateInventoryNodeHandler);
         binding.add(CreateConditionalEdgeHandler);
         binding.add(EditTaskOperationHandler);
         binding.add(ApplyConditionEditHandler);
-        binding.add(AddInventoryItemHandler);
-        binding.add(RemoveInventoryItemHandler);
-        // replace the default label edit handler with one that keeps the inventory items in sync
-        binding.rebind(GModelApplyLabelEditOperationHandler, InventoryAwareApplyLabelEditOperationHandler);
+        // replace the default label edit handler with one that keeps the task variables in sync
+        binding.rebind(GModelApplyLabelEditOperationHandler, VariableAwareApplyLabelEditOperationHandler);
     }
 
     protected bindDiagramConfiguration(): BindingTarget<DiagramConfiguration> {

@@ -24,7 +24,6 @@ export type WorkflowDslKeywordNames =
     | "=="
     | ">"
     | ">="
-    | "amount"
     | "if";
 
 export type WorkflowDslTokenNames = WorkflowDslTerminalNames | WorkflowDslKeywordNames;
@@ -32,34 +31,22 @@ export type WorkflowDslTokenNames = WorkflowDslTerminalNames | WorkflowDslKeywor
 export interface Condition extends langium.AstNode {
     readonly $container: Model;
     readonly $type: 'Condition';
-    item: langium.Reference<InventoryItem>;
     operator: '!=' | '<' | '<=' | '==' | '>' | '>=';
+    property: langium.Reference<Property>;
     value: number;
+    variable: langium.Reference<Variable>;
 }
 
 export const Condition = {
     $type: 'Condition',
-    item: 'item',
     operator: 'operator',
-    value: 'value'
+    property: 'property',
+    value: 'value',
+    variable: 'variable'
 } as const;
 
 export function isCondition(item: unknown): item is Condition {
     return reflection.isInstance(item, Condition.$type);
-}
-
-export interface InventoryItem extends langium.AstNode {
-    readonly $type: 'InventoryItem';
-    name: string;
-}
-
-export const InventoryItem = {
-    $type: 'InventoryItem',
-    name: 'name'
-} as const;
-
-export function isInventoryItem(item: unknown): item is InventoryItem {
-    return reflection.isInstance(item, InventoryItem.$type);
 }
 
 export interface Model extends langium.AstNode {
@@ -76,10 +63,39 @@ export function isModel(item: unknown): item is Model {
     return reflection.isInstance(item, Model.$type);
 }
 
+export interface Property extends langium.AstNode {
+    readonly $type: 'Property';
+    name: string;
+}
+
+export const Property = {
+    $type: 'Property',
+    name: 'name'
+} as const;
+
+export function isProperty(item: unknown): item is Property {
+    return reflection.isInstance(item, Property.$type);
+}
+
+export interface Variable extends langium.AstNode {
+    readonly $type: 'Variable';
+    name: string;
+}
+
+export const Variable = {
+    $type: 'Variable',
+    name: 'name'
+} as const;
+
+export function isVariable(item: unknown): item is Variable {
+    return reflection.isInstance(item, Variable.$type);
+}
+
 export type WorkflowDslAstType = {
     Condition: Condition
-    InventoryItem: InventoryItem
     Model: Model
+    Property: Property
+    Variable: Variable
 }
 
 export class WorkflowDslAstReflection extends langium.AbstractAstReflection {
@@ -87,24 +103,19 @@ export class WorkflowDslAstReflection extends langium.AbstractAstReflection {
         Condition: {
             name: Condition.$type,
             properties: {
-                item: {
-                    name: Condition.item,
-                    referenceType: InventoryItem.$type
-                },
                 operator: {
                     name: Condition.operator
                 },
+                property: {
+                    name: Condition.property,
+                    referenceType: Property.$type
+                },
                 value: {
                     name: Condition.value
-                }
-            },
-            superTypes: []
-        },
-        InventoryItem: {
-            name: InventoryItem.$type,
-            properties: {
-                name: {
-                    name: InventoryItem.name
+                },
+                variable: {
+                    name: Condition.variable,
+                    referenceType: Variable.$type
                 }
             },
             superTypes: []
@@ -114,6 +125,24 @@ export class WorkflowDslAstReflection extends langium.AbstractAstReflection {
             properties: {
                 condition: {
                     name: Model.condition
+                }
+            },
+            superTypes: []
+        },
+        Property: {
+            name: Property.$type,
+            properties: {
+                name: {
+                    name: Property.name
+                }
+            },
+            superTypes: []
+        },
+        Variable: {
+            name: Variable.$type,
+            properties: {
+                name: {
+                    name: Variable.name
                 }
             },
             superTypes: []
