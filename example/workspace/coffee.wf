@@ -6,7 +6,7 @@
     "y": 0
   },
   "id": "sprotty",
-  "revision": 0,
+  "revision": 9,
   "children": [
     {
       "cssClasses": [
@@ -50,11 +50,11 @@
             "paddingRight": 10
           },
           "position": {
-            "x": 5,
+            "x": 10.04296875,
             "y": 5
           },
           "size": {
-            "width": 78,
+            "width": 67.9140625,
             "height": 20
           },
           "children": [
@@ -75,6 +75,10 @@
             {
               "cssClasses": [],
               "type": "label:heading",
+              "alignment": {
+                "x": 15.95703125,
+                "y": 13
+              },
               "id": "push_label",
               "text": "Push",
               "position": {
@@ -82,7 +86,7 @@
                 "y": 2
               },
               "size": {
-                "width": 32,
+                "width": 31.9140625,
                 "height": 16
               },
               "children": []
@@ -125,7 +129,7 @@
       },
       "size": {
         "width": 90,
-        "height": 49
+        "height": 50
       },
       "layout": "vbox",
       "layoutOptions": {
@@ -152,7 +156,7 @@
             "paddingRight": 10
           },
           "position": {
-            "x": 5,
+            "x": 6,
             "y": 5
           },
           "size": {
@@ -177,6 +181,10 @@
             {
               "cssClasses": [],
               "type": "label:heading",
+              "alignment": {
+                "x": 21,
+                "y": 13
+              },
               "id": "chkWt_label",
               "text": "ChkWt",
               "position": {
@@ -196,15 +204,19 @@
             "variable"
           ],
           "type": "label:variable",
+          "alignment": {
+            "x": 31.01953125,
+            "y": 11
+          },
           "id": "chkWt_variable",
           "text": "water:level",
           "position": {
-            "x": 17,
+            "x": 13.4912109375,
             "y": 31
           },
           "size": {
-            "width": 56,
-            "height": 13
+            "width": 63.017578125,
+            "height": 14
           },
           "children": []
         }
@@ -216,8 +228,8 @@
       "nodeType": "decisionNode",
       "id": "waterDecision",
       "position": {
-        "x": 400,
-        "y": 85
+        "x": 350,
+        "y": 10
       },
       "size": {
         "width": 32,
@@ -239,8 +251,8 @@
       "taskType": "automated",
       "id": "wtOk",
       "position": {
-        "x": 530,
-        "y": 40
+        "x": 510,
+        "y": -80
       },
       "size": {
         "width": 84,
@@ -271,11 +283,11 @@
             "paddingRight": 10
           },
           "position": {
-            "x": 5,
+            "x": 5.33203125,
             "y": 5
           },
           "size": {
-            "width": 74,
+            "width": 73.3359375,
             "height": 20
           },
           "children": [
@@ -296,6 +308,10 @@
             {
               "cssClasses": [],
               "type": "label:heading",
+              "alignment": {
+                "x": 18.66796875,
+                "y": 13
+              },
               "id": "wtOk_label",
               "text": "WtOK",
               "position": {
@@ -303,7 +319,7 @@
                 "y": 2
               },
               "size": {
-                "width": 37,
+                "width": 37.3359375,
                 "height": 16
               },
               "children": []
@@ -322,8 +338,8 @@
       "taskType": "manual",
       "id": "rflWt",
       "position": {
-        "x": 530,
-        "y": 130
+        "x": 510,
+        "y": 120
       },
       "size": {
         "width": 81,
@@ -354,11 +370,11 @@
             "paddingRight": 10
           },
           "position": {
-            "x": 5,
+            "x": 5.390625,
             "y": 5
           },
           "size": {
-            "width": 71,
+            "width": 70.21875,
             "height": 20
           },
           "children": [
@@ -379,6 +395,10 @@
             {
               "cssClasses": [],
               "type": "label:heading",
+              "alignment": {
+                "x": 17.109375,
+                "y": 13
+              },
               "id": "rflWt_label",
               "text": "RflWt",
               "position": {
@@ -386,7 +406,7 @@
                 "y": 2
               },
               "size": {
-                "width": 34,
+                "width": 34.21875,
                 "height": 16
               },
               "children": []
@@ -401,8 +421,8 @@
       "nodeType": "mergeNode",
       "id": "waterMerge",
       "position": {
-        "x": 680,
-        "y": 85
+        "x": 730,
+        "y": -20
       },
       "size": {
         "width": 32,
@@ -430,8 +450,8 @@
         "y": 195
       },
       "size": {
-        "width": 110,
-        "height": 49
+        "width": 123.203125,
+        "height": 50
       },
       "layout": "vbox",
       "layoutOptions": {
@@ -458,11 +478,11 @@
             "paddingRight": 10
           },
           "position": {
-            "x": 5,
+            "x": 22.984375,
             "y": 5
           },
           "size": {
-            "width": 77,
+            "width": 77.234375,
             "height": 20
           },
           "children": [
@@ -483,6 +503,10 @@
             {
               "cssClasses": [],
               "type": "label:heading",
+              "alignment": {
+                "x": 20.6171875,
+                "y": 13
+              },
               "id": "chkTp_label",
               "text": "ChkTp",
               "position": {
@@ -490,7 +514,7 @@
                 "y": 2
               },
               "size": {
-                "width": 41,
+                "width": 41.234375,
                 "height": 16
               },
               "children": []
@@ -502,15 +526,19 @@
             "variable"
           ],
           "type": "label:variable",
+          "alignment": {
+            "x": 56.35546875,
+            "y": 11
+          },
           "id": "chkTp_variable",
           "text": "temperature:degree",
           "position": {
-            "x": 7,
+            "x": 5,
             "y": 31
           },
           "size": {
-            "width": 96,
-            "height": 13
+            "width": 113.203125,
+            "height": 14
           },
           "children": []
         }
@@ -522,8 +550,8 @@
       "nodeType": "decisionNode",
       "id": "tempDecision",
       "position": {
-        "x": 400,
-        "y": 210
+        "x": 380,
+        "y": 290
       },
       "size": {
         "width": 32,
@@ -577,11 +605,11 @@
             "paddingRight": 10
           },
           "position": {
-            "x": 5,
+            "x": 5.48046875,
             "y": 5
           },
           "size": {
-            "width": 86,
+            "width": 85.0390625,
             "height": 20
           },
           "children": [
@@ -602,6 +630,10 @@
             {
               "cssClasses": [],
               "type": "label:heading",
+              "alignment": {
+                "x": 24.51953125,
+                "y": 13
+              },
               "id": "keepTp_label",
               "text": "KeepTp",
               "position": {
@@ -609,7 +641,7 @@
                 "y": 2
               },
               "size": {
-                "width": 49,
+                "width": 49.0390625,
                 "height": 16
               },
               "children": []
@@ -629,7 +661,7 @@
       "id": "preHeat",
       "position": {
         "x": 530,
-        "y": 255
+        "y": 400
       },
       "size": {
         "width": 98,
@@ -660,11 +692,11 @@
             "paddingRight": 10
           },
           "position": {
-            "x": 5,
+            "x": 5.3203125,
             "y": 5
           },
           "size": {
-            "width": 88,
+            "width": 87.359375,
             "height": 20
           },
           "children": [
@@ -685,6 +717,10 @@
             {
               "cssClasses": [],
               "type": "label:heading",
+              "alignment": {
+                "x": 25.6796875,
+                "y": 13
+              },
               "id": "preHeat_label",
               "text": "PreHeat",
               "position": {
@@ -692,7 +728,7 @@
                 "y": 2
               },
               "size": {
-                "width": 51,
+                "width": 51.359375,
                 "height": 16
               },
               "children": []
@@ -707,8 +743,8 @@
       "nodeType": "mergeNode",
       "id": "tempMerge",
       "position": {
-        "x": 680,
-        "y": 210
+        "x": 730,
+        "y": 310
       },
       "size": {
         "width": 32,
@@ -728,8 +764,8 @@
       "nodeType": "joinNode",
       "id": "join",
       "position": {
-        "x": 760,
-        "y": 135
+        "x": 1040,
+        "y": 140
       },
       "size": {
         "width": 10,
@@ -747,8 +783,8 @@
       "taskType": "automated",
       "id": "brew",
       "position": {
-        "x": 820,
-        "y": 145
+        "x": 1120,
+        "y": 150
       },
       "size": {
         "width": 79,
@@ -779,11 +815,11 @@
             "paddingRight": 10
           },
           "position": {
-            "x": 5,
+            "x": 5.55078125,
             "y": 5
           },
           "size": {
-            "width": 69,
+            "width": 67.8984375,
             "height": 20
           },
           "children": [
@@ -804,6 +840,10 @@
             {
               "cssClasses": [],
               "type": "label:heading",
+              "alignment": {
+                "x": 15.94921875,
+                "y": 13
+              },
               "id": "brew_label",
               "text": "Brew",
               "position": {
@@ -811,7 +851,7 @@
                 "y": 2
               },
               "size": {
-                "width": 32,
+                "width": 31.8984375,
                 "height": 16
               },
               "children": []
@@ -827,6 +867,12 @@
       "id": "edge_push_fork",
       "sourceId": "push",
       "targetId": "fork",
+      "args": {
+        "edgeSourcePointX": 158,
+        "edgeSourcePointY": 155,
+        "edgeTargetPointX": 184.5,
+        "edgeTargetPointY": 155
+      },
       "children": []
     },
     {
@@ -836,6 +882,12 @@
       "id": "edge_fork_chkWt",
       "sourceId": "fork",
       "targetId": "chkWt",
+      "args": {
+        "edgeSourcePointX": 194.86199678796407,
+        "edgeSourcePointY": 151.92926518654897,
+        "edgeTargetPointX": 245.41666666666666,
+        "edgeTargetPointY": 120
+      },
       "children": []
     },
     {
@@ -845,6 +897,12 @@
       "id": "edge_fork_chkTp",
       "sourceId": "fork",
       "targetId": "chkTp",
+      "args": {
+        "edgeSourcePointX": 194.9103965858539,
+        "edgeSourcePointY": 157.85995796949982,
+        "edgeTargetPointX": 258.67788461538464,
+        "edgeTargetPointY": 195
+      },
       "children": []
     },
     {
@@ -854,6 +912,12 @@
       "id": "edge_chkWt_waterDecision",
       "sourceId": "chkWt",
       "targetId": "waterDecision",
+      "args": {
+        "edgeSourcePointX": 314.3478260869565,
+        "edgeSourcePointY": 70,
+        "edgeTargetPointX": 356.97937838475667,
+        "edgeTargetPointY": 33.68423322779989
+      },
       "children": []
     },
     {
@@ -863,6 +927,12 @@
       "id": "edge_chkTp_tempDecision",
       "sourceId": "chkTp",
       "targetId": "tempDecision",
+      "args": {
+        "edgeSourcePointX": 329.04296875,
+        "edgeSourcePointY": 245,
+        "edgeTargetPointX": 387.25794780124545,
+        "edgeTargetPointY": 298.0357104523802
+      },
       "children": []
     },
     {
@@ -876,10 +946,20 @@
       "targetId": "wtOk",
       "condition": "if water.level >= 50",
       "variableId": "chkWt",
+      "args": {
+        "edgeSourcePointX": 377.192810953515,
+        "edgeSourcePointY": 20.523947329194275,
+        "edgeTargetPointX": 521.3406593406594,
+        "edgeTargetPointY": -50
+      },
       "children": [
         {
           "cssClasses": [],
           "type": "label:monaco",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
           "id": "condWaterOk_condition",
           "text": "if water.level >= 50",
           "edgePlacement": {
@@ -889,7 +969,7 @@
             "offset": 0
           },
           "size": {
-            "width": 180,
+            "width": 200,
             "height": 22
           },
           "children": []
@@ -907,10 +987,20 @@
       "targetId": "rflWt",
       "condition": "if water.level < 50",
       "variableId": "chkWt",
+      "args": {
+        "edgeSourcePointX": 376.48840812315393,
+        "edgeSourcePointY": 32.19640371503404,
+        "edgeTargetPointX": 525.1100917431193,
+        "edgeTargetPointY": 120
+      },
       "children": [
         {
           "cssClasses": [],
           "type": "label:monaco",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
           "id": "condWaterLow_condition",
           "text": "if water.level < 50",
           "edgePlacement": {
@@ -920,7 +1010,7 @@
             "offset": 0
           },
           "size": {
-            "width": 180,
+            "width": 200,
             "height": 22
           },
           "children": []
@@ -934,6 +1024,12 @@
       "id": "edge_wtOk_waterMerge",
       "sourceId": "wtOk",
       "targetId": "waterMerge",
+      "args": {
+        "edgeSourcePointX": 594,
+        "edgeSourcePointY": -51.79381443298969,
+        "edgeTargetPointX": 733.3504742191487,
+        "edgeTargetPointY": -7.9774282094429205
+      },
       "children": []
     },
     {
@@ -943,6 +1039,12 @@
       "id": "edge_rflWt_waterMerge",
       "sourceId": "rflWt",
       "targetId": "waterMerge",
+      "args": {
+        "edgeSourcePointX": 571.5971223021583,
+        "edgeSourcePointY": 120,
+        "edgeTargetPointX": 736.2412299095608,
+        "edgeTargetPointY": 2.9384605758109252
+      },
       "children": []
     },
     {
@@ -956,10 +1058,20 @@
       "targetId": "keepTp",
       "condition": "if temperature.degree >= 90",
       "variableId": "chkTp",
+      "args": {
+        "edgeSourcePointX": 406.026937835127,
+        "edgeSourcePointY": 299.33373913159136,
+        "edgeTargetPointX": 555.4380165289256,
+        "edgeTargetPointY": 200
+      },
       "children": [
         {
           "cssClasses": [],
           "type": "label:monaco",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
           "id": "condTempOk_condition",
           "text": "if temperature.degree >= 90",
           "edgePlacement": {
@@ -969,7 +1081,7 @@
             "offset": 0
           },
           "size": {
-            "width": 180,
+            "width": 200,
             "height": 22
           },
           "children": []
@@ -987,10 +1099,20 @@
       "targetId": "preHeat",
       "condition": "if temperature.degree < 90",
       "variableId": "chkTp",
+      "args": {
+        "edgeSourcePointX": 406.456969990879,
+        "edgeSourcePointY": 312.2284684645126,
+        "edgeTargetPointX": 553.8165137614678,
+        "edgeTargetPointY": 400
+      },
       "children": [
         {
           "cssClasses": [],
           "type": "label:monaco",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
           "id": "condTempLow_condition",
           "text": "if temperature.degree < 90",
           "edgePlacement": {
@@ -1000,7 +1122,7 @@
             "offset": 0
           },
           "size": {
-            "width": 180,
+            "width": 200,
             "height": 22
           },
           "children": []
@@ -1014,6 +1136,12 @@
       "id": "edge_keepTp_tempMerge",
       "sourceId": "keepTp",
       "targetId": "tempMerge",
+      "args": {
+        "edgeSourcePointX": 595.8723404255319,
+        "edgeSourcePointY": 200,
+        "edgeTargetPointX": 736.9179837468714,
+        "edgeTargetPointY": 318.37759350183853
+      },
       "children": []
     },
     {
@@ -1023,6 +1151,12 @@
       "id": "edge_preHeat_tempMerge",
       "sourceId": "preHeat",
       "targetId": "tempMerge",
+      "args": {
+        "edgeSourcePointX": 607.1460674157304,
+        "edgeSourcePointY": 400,
+        "edgeTargetPointX": 735.121250409879,
+        "edgeTargetPointY": 331.7976569671902
+      },
       "children": []
     },
     {
@@ -1032,6 +1166,12 @@
       "id": "edge_waterMerge_join",
       "sourceId": "waterMerge",
       "targetId": "join",
+      "args": {
+        "edgeSourcePointX": 756.6575036415823,
+        "edgeSourcePointY": 2.0238064061117287,
+        "edgeTargetPointX": 1040.07253108064,
+        "edgeTargetPointY": 162.21490887166604
+      },
       "children": []
     },
     {
@@ -1041,6 +1181,12 @@
       "id": "edge_tempMerge_join",
       "sourceId": "tempMerge",
       "targetId": "join",
+      "args": {
+        "edgeSourcePointX": 756.8402355499611,
+        "edgeSourcePointY": 320.1629500884825,
+        "edgeTargetPointX": 1040.04587556115,
+        "edgeTargetPointY": 167.66760546707306
+      },
       "children": []
     },
     {
@@ -1050,6 +1196,12 @@
       "id": "edge_join_brew",
       "sourceId": "join",
       "targetId": "brew",
+      "args": {
+        "edgeSourcePointX": 1050.5,
+        "edgeSourcePointY": 165,
+        "edgeTargetPointX": 1120,
+        "edgeTargetPointY": 165
+      },
       "children": []
     }
   ]
