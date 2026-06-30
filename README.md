@@ -4,6 +4,11 @@ This repository serves the development of an integration framework between [GLSP
 
 It is based on a fork of https://github.com/eclipse-glsp/glsp-examples/tree/master.
 
+## Authors
+
+-   Andreas ([@Sakrafux](https://github.com/Sakrafux))
+-   BoFan ([@YourHarbour](https://github.com/YourHarbour))
+
 ## Prerequisites
 
 The following libraries/frameworks need to be installed on your system:
