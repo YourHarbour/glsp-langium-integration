@@ -1,62 +1,89 @@
-# glsp-langium integration
+# GLSP-Langium integration
 
-This repository serves the development of an integration framework between [GLSP](https://github.com/eclipse-glsp/glsp) and [Langium](https://github.com/eclipse-langium/langium).
+This repository contains an integration framework for combining [Eclipse GLSP](https://github.com/eclipse-glsp/glsp) and [Langium](https://github.com/eclipse-langium/langium). The framework makes it possible to embed textual language services directly into graphical GLSP diagram editors.
 
-It is based on a fork of https://github.com/eclipse-glsp/glsp-examples/tree/master.
+The project is based on a fork of the Eclipse GLSP examples repository and uses the Workflow example as its demonstrator.
+
+## What this project demonstrates
+
+The central idea is not to maintain separate textual and graphical views of the same model. Instead, the example combines both modelling paradigms in one diagram:
+
+- workflow tasks are graphical GLSP model elements;
+- selected tasks provide variables, such as `water:level` or `temperature:degree`;
+- conditional edges contain embedded Monaco editors;
+- the text inside those editors is parsed, linked, completed, and validated by a Langium language server running in a web worker;
+- Langium receives scoping information from the GLSP graph, so a condition can only reference variables that are visible from its position in the workflow.
+
+For example, a conditional edge downstream of the `ChkWt` task can use:
+
+```text
+if water.level >= 50
+```
+
+If the same edge references an out-of-scope variable or an invalid property, Langium reports diagnostics and GLSP displays them as diagram markers.
+
+## Repository structure
+
+- `framework` - reusable integration code published as the npm package `glsp-langium-integration`.
+- `example` - Workflow-based GLSP example that uses the framework.
+- `example/workflow-glsp` - client-side diagram code, Monaco integration, Langium grammar, worker setup, and graph-derived scoping.
+- `example/workflow-server` - GLSP server, model extensions, operation handlers, and persistence of condition edits.
+- `example/workspace/coffee.wf` - example workflow model used for the demo.
+- `demo-video-script.md` - suggested 5 minute screencast script and appendix outline.
+
+## Key implementation files
+
+- `framework/src/glsp/glsp-langium-module.ts` registers the reusable GLSP-side integration services.
+- `framework/src/glsp/editor/monaco-label.view.tsx` renders Monaco-backed labels inside the SVG diagram.
+- `framework/src/glsp/validation/langium-scoping-information.handler.ts` forwards graph-derived scoping information to the Langium worker.
+- `framework/src/glsp/validation/langium-validation.handler.ts` converts Langium diagnostics into GLSP markers.
+- `framework/src/langium/worker/start.ts` starts the Langium language server and the GLSP communication listeners.
+- `example/workflow-glsp/src/langium/ls/grammars/conditional_edge.langium` defines the embedded condition language.
+- `example/workflow-glsp/src/langium-integration/variable-scope.ts` computes which variables are visible to each conditional edge.
+- `example/workflow-glsp/src/langium/ls/workflow-dsl-references.ts` exposes graph elements as Langium external references.
+- `example/workflow-glsp/src/langium-integration/monaco-submit.service.ts` submits edited condition text back to GLSP.
+- `example/workflow-server/src/conditionedit/apply-condition-edit-handler.ts` persists condition edits in the GLSP source model.
 
 ## Authors
 
--   Andreas ([@Sakrafux](https://github.com/Sakrafux))
--   BoFan ([@YourHarbour](https://github.com/YourHarbour))
+- Andreas ([@Sakrafux](https://github.com/Sakrafux))
+- BoFan ([@YourHarbour](https://github.com/YourHarbour))
 
 ## Prerequisites
 
-The following libraries/frameworks need to be installed on your system:
+- [Node.js](https://nodejs.org/en/) `>=22`
+- [Yarn Classic](https://classic.yarnpkg.com/en/docs/install) `>=1.7.0 <2`
 
--   [Node.js](https://nodejs.org/en/) `>=20`
--   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0 < 2.x.x`
--   [Java](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) `>=17`
--   [Maven](https://maven.apache.org/) `>=3.6.0`
+The example is an Eclipse Theia application, so the [Theia development prerequisites](https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites) may also apply to your system.
 
-The examples are heavily interwoven with Eclipse Theia, so please also check the [prerequisites of Theia](https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites).
+## Build and run the example
 
-## Directories
+From the repository root:
 
-For orientation, the following directories are of importance:
-- `framework` - Contains the actual GLSP-Langium-Integration code, which is published as the npm package `glsp-langium-integration`.
-- `example` - Contains a simple adjusted version of the GLSP official workflow template, which makes use of the GLSP-Langium-Integration.
-
-## Building the example
-
-Move to the example:
-
-```
+```bash
 cd example
+yarn
+yarn build
+yarn start
 ```
 
-Install all dependencies
+Open `http://localhost:3000` and load `coffee.wf` from the workspace in the Workflow Diagram Editor.
 
-```
-yarn install
-cd glsp-client
-yarn install
-cd ..
-```
+For debugging with an external GLSP server:
 
-Build the application (both server and client) and start it:
-
-```
-yarn run build
-yarn run start
-
-or 
-
-yarn run start:build
+```bash
+cd example
+yarn start:server
+yarn start:external
 ```
 
-Build (and start) the application using docker:
+To work in watch mode:
 
+```bash
+cd example
+yarn watch
 ```
-yarn run docker:build
-yarn run docker:run
-```
+
+## Demo video
+
+Authors can use `demo-video-script.md` as the basis for the required short tool screencast or appendix. It contains a 5 minute outline covering the editor behaviour, the Langium grammar, graph-derived scoping, validation, and the code that persists edited text back into the GLSP model.
