@@ -4,6 +4,12 @@ This repository contains an integration framework for combining [Eclipse GLSP](h
 
 The project is based on a fork of the Eclipse GLSP examples repository and uses the Workflow example as its demonstrator.
 
+## Demo
+
+![GLSP-Langium integration demo](demo/demo.gif)
+
+The screencast walks through the Workflow example end to end: hovering the tasks that provide `water:level` and `temperature:degree`, editing a conditional edge's guard in an embedded Monaco editor, live Langium validation when an out-of-scope variable or an unknown property is referenced, and a short tour of the code that wires the graph-derived scoping together. A full-resolution version with subtitles is in [`demo/demo.mp4`](demo/demo.mp4).
+
 ## What this project demonstrates
 
 The central idea is not to maintain separate textual and graphical views of the same model. Instead, the example combines both modelling paradigms in one diagram:
@@ -29,7 +35,6 @@ If the same edge references an out-of-scope variable or an invalid property, Lan
 - `example/workflow-glsp` - client-side diagram code, Monaco integration, Langium grammar, worker setup, and graph-derived scoping.
 - `example/workflow-server` - GLSP server, model extensions, operation handlers, and persistence of condition edits.
 - `example/workspace/coffee.wf` - example workflow model used for the demo.
-- `demo-video-script.md` - suggested 5 minute screencast script and appendix outline.
 
 ## Key implementation files
 
@@ -84,6 +89,3 @@ cd example
 yarn watch
 ```
 
-## Demo video
-
-Authors can use `demo-video-script.md` as the basis for the required short tool screencast or appendix. It contains a 5 minute outline covering the editor behaviour, the Langium grammar, graph-derived scoping, validation, and the code that persists edited text back into the GLSP model.
