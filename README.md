@@ -6,7 +6,14 @@ The project is based on a fork of the Eclipse GLSP examples repository and uses 
 
 ## Demo
 
+https://github.com/user-attachments/assets/b6813678-2eab-4290-ba90-833c6bddff7b
+
+<details>
+<summary>Prefer an inline preview? (animated GIF)</summary>
+
 ![GLSP-Langium integration demo](demo/demo.gif)
+
+</details>
 
 The screencast walks through the Workflow example end to end: hovering the tasks that provide `water:level` and `temperature:degree`, editing a conditional edge's guard in an embedded Monaco editor, live Langium validation when an out-of-scope variable or an unknown property is referenced, and a short tour of the code that wires the graph-derived scoping together. A full-resolution version with subtitles is in [`demo/demo.mp4`](demo/demo.mp4).
 
