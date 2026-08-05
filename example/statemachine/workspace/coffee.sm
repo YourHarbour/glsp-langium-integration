@@ -1,0 +1,461 @@
+{
+  "cssClasses": [],
+  "type": "graph",
+  "position": {
+    "x": 0,
+    "y": 0
+  },
+  "id": "sprotty",
+  "revision": 1,
+  "children": [
+    {
+      "cssClasses": [
+        "declarations"
+      ],
+      "type": "node:declarations",
+      "id": "declarations",
+      "declarations": "events\n    brewCoffee\n    done\n    fail\n    reset\n    skip\ncommands\n    startPump\n    stopPump\n    beep",
+      "events": [
+        "brewCoffee",
+        "done",
+        "fail",
+        "reset",
+        "skip"
+      ],
+      "commands": [
+        "startPump",
+        "stopPump",
+        "beep"
+      ],
+      "position": {
+        "x": 40,
+        "y": 60
+      },
+      "size": {
+        "width": 290,
+        "height": 120
+      },
+      "layout": "vbox",
+      "layoutOptions": {
+        "paddingTop": 5,
+        "paddingBottom": 5,
+        "paddingLeft": 5,
+        "paddingRight": 5
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "label:monaco-declarations",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "declarations_declarations",
+          "text": "events\n    brewCoffee\n    done\n    fail\n    reset\n    skip\ncommands\n    startPump\n    stopPump\n    beep",
+          "position": {
+            "x": 5,
+            "y": 5
+          },
+          "size": {
+            "width": 280,
+            "height": 110
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "cssClasses": [
+        "state",
+        "initial"
+      ],
+      "type": "node:state",
+      "id": "idle",
+      "name": "Idle",
+      "initial": true,
+      "position": {
+        "x": 430,
+        "y": 80
+      },
+      "size": {
+        "width": 52.57500076293945,
+        "height": 36
+      },
+      "layout": "vbox",
+      "args": {
+        "radiusBottomLeft": 5,
+        "radiusTopLeft": 5,
+        "radiusTopRight": 5,
+        "radiusBottomRight": 5
+      },
+      "layoutOptions": {
+        "prefWidth": 52.57500076293945,
+        "prefHeight": 36
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "comp:header",
+          "id": "idle_header",
+          "layout": "hbox",
+          "layoutOptions": {
+            "paddingTop": 5,
+            "paddingBottom": 5,
+            "paddingLeft": 10,
+            "paddingRight": 10
+          },
+          "position": {
+            "x": 5,
+            "y": 5
+          },
+          "size": {
+            "width": 42.57500076293945,
+            "height": 26
+          },
+          "children": [
+            {
+              "cssClasses": [],
+              "type": "label:heading",
+              "alignment": {
+                "x": 11.287500381469727,
+                "y": 12.800000190734863
+              },
+              "id": "idle_label",
+              "text": "Idle",
+              "position": {
+                "x": 10,
+                "y": 5
+              },
+              "size": {
+                "width": 22.575000762939453,
+                "height": 16
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cssClasses": [
+        "state"
+      ],
+      "type": "node:state",
+      "id": "brewing",
+      "name": "Brewing",
+      "position": {
+        "x": 970,
+        "y": 80
+      },
+      "size": {
+        "width": 80.5875015258789,
+        "height": 36
+      },
+      "layout": "vbox",
+      "args": {
+        "radiusBottomLeft": 5,
+        "radiusTopLeft": 5,
+        "radiusTopRight": 5,
+        "radiusBottomRight": 5
+      },
+      "layoutOptions": {
+        "prefWidth": 80.5875015258789,
+        "prefHeight": 36
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "comp:header",
+          "id": "brewing_header",
+          "layout": "hbox",
+          "layoutOptions": {
+            "paddingTop": 5,
+            "paddingBottom": 5,
+            "paddingLeft": 10,
+            "paddingRight": 10
+          },
+          "position": {
+            "x": 5,
+            "y": 5
+          },
+          "size": {
+            "width": 70.5875015258789,
+            "height": 26
+          },
+          "children": [
+            {
+              "cssClasses": [],
+              "type": "label:heading",
+              "alignment": {
+                "x": 25.293750762939453,
+                "y": 12.800000190734863
+              },
+              "id": "brewing_label",
+              "text": "Brewing",
+              "position": {
+                "x": 10,
+                "y": 5
+              },
+              "size": {
+                "width": 50.587501525878906,
+                "height": 16
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cssClasses": [
+        "state"
+      ],
+      "type": "node:state",
+      "id": "error",
+      "name": "Error",
+      "position": {
+        "x": 670,
+        "y": 280
+      },
+      "size": {
+        "width": 62.04824447631836,
+        "height": 36
+      },
+      "layout": "vbox",
+      "args": {
+        "radiusBottomLeft": 5,
+        "radiusTopLeft": 5,
+        "radiusTopRight": 5,
+        "radiusBottomRight": 5
+      },
+      "layoutOptions": {
+        "prefWidth": 62.04824447631836,
+        "prefHeight": 36
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "comp:header",
+          "id": "error_header",
+          "layout": "hbox",
+          "layoutOptions": {
+            "paddingTop": 5,
+            "paddingBottom": 5,
+            "paddingLeft": 10,
+            "paddingRight": 10
+          },
+          "position": {
+            "x": 5,
+            "y": 5
+          },
+          "size": {
+            "width": 52.04824447631836,
+            "height": 26
+          },
+          "children": [
+            {
+              "cssClasses": [],
+              "type": "label:heading",
+              "alignment": {
+                "x": 15.55625057220459,
+                "y": 12.800000190734863
+              },
+              "id": "error_label",
+              "text": "Error",
+              "position": {
+                "x": 10,
+                "y": 5
+              },
+              "size": {
+                "width": 32.04824447631836,
+                "height": 16
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cssClasses": [
+        "transition"
+      ],
+      "type": "edge:transition",
+      "routingPoints": [
+        {
+          "kind": "linear",
+          "x": 695,
+          "y": 5,
+          "pointIndex": 0
+        }
+      ],
+      "id": "idle_brewing",
+      "sourceId": "idle",
+      "targetId": "brewing",
+      "spec": "brewCoffee / startPump",
+      "eventName": "brewCoffee",
+      "actionNames": [
+        "startPump"
+      ],
+      "args": {
+        "edgeSourcePointX": 482.57500076293945,
+        "edgeSourcePointY": 87.758653026618,
+        "edgeTargetPointX": 970,
+        "edgeTargetPointY": 86.11483319321837
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "label:monaco",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "idle_brewing_spec",
+          "text": "brewCoffee / startPump",
+          "edgePlacement": {
+            "position": 0.5,
+            "side": "on",
+            "rotate": false,
+            "offset": 0
+          },
+          "size": {
+            "width": 200,
+            "height": 22
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "cssClasses": [
+        "transition"
+      ],
+      "type": "edge:transition",
+      "routingPoints": [],
+      "id": "brewing_idle",
+      "sourceId": "brewing",
+      "targetId": "idle",
+      "spec": "done / stopPump, beep",
+      "eventName": "done",
+      "actionNames": [
+        "stopPump",
+        "beep"
+      ],
+      "args": {
+        "edgeSourcePointX": 970,
+        "edgeSourcePointY": 98,
+        "edgeTargetPointX": 482.57500076293945,
+        "edgeTargetPointY": 98
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "label:monaco",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "brewing_idle_spec",
+          "text": "done / stopPump, beep",
+          "edgePlacement": {
+            "position": 0.5,
+            "side": "on",
+            "rotate": false,
+            "offset": 0
+          },
+          "size": {
+            "width": 200,
+            "height": 22
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "cssClasses": [
+        "transition"
+      ],
+      "type": "edge:transition",
+      "routingPoints": [],
+      "id": "brewing_error",
+      "sourceId": "brewing",
+      "targetId": "error",
+      "spec": "fail / stopPump",
+      "eventName": "fail",
+      "actionNames": [
+        "stopPump"
+      ],
+      "args": {
+        "edgeSourcePointX": 982.4594841957093,
+        "edgeSourcePointY": 116,
+        "edgeTargetPointX": 728.8583888053894,
+        "edgeTargetPointY": 280
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "label:monaco",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "brewing_error_spec",
+          "text": "fail / stopPump",
+          "edgePlacement": {
+            "position": 0.5,
+            "side": "on",
+            "rotate": false,
+            "offset": 0
+          },
+          "size": {
+            "width": 200,
+            "height": 22
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "cssClasses": [
+        "transition"
+      ],
+      "type": "edge:transition",
+      "routingPoints": [],
+      "id": "error_idle",
+      "sourceId": "error",
+      "targetId": "idle",
+      "spec": "reset",
+      "eventName": "reset",
+      "args": {
+        "edgeSourcePointX": 678.9978262710571,
+        "edgeSourcePointY": 280,
+        "edgeTargetPointX": 478.31379634857177,
+        "edgeTargetPointY": 116
+      },
+      "children": [
+        {
+          "cssClasses": [],
+          "type": "label:monaco",
+          "alignment": {
+            "x": 0,
+            "y": 0
+          },
+          "id": "error_idle_spec",
+          "text": "reset",
+          "edgePlacement": {
+            "position": 0.5,
+            "side": "on",
+            "rotate": false,
+            "offset": 0
+          },
+          "size": {
+            "width": 200,
+            "height": 22
+          },
+          "children": []
+        }
+      ]
+    }
+  ]
+}

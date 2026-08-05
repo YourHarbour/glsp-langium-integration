@@ -1,0 +1,47 @@
+{
+  "name": "statemachine-declarations",
+  "scopeName": "source.statemachine-declarations",
+  "fileTypes": [
+    ".sm_declarations"
+  ],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "name": "keyword.control.statemachine-declarations",
+      "match": "\\b(commands|events)\\b"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.statemachine-declarations",
+          "begin": "/\\*",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.statemachine-declarations"
+            }
+          },
+          "end": "\\*/",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.statemachine-declarations"
+            }
+          }
+        },
+        {
+          "begin": "//",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.whitespace.comment.leading.statemachine-declarations"
+            }
+          },
+          "end": "(?=$)",
+          "name": "comment.line.statemachine-declarations"
+        }
+      ]
+    }
+  }
+}

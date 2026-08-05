@@ -1,0 +1,47 @@
+{
+  "name": "statemachine-transition",
+  "scopeName": "source.statemachine-transition",
+  "fileTypes": [
+    ".sm_transition"
+  ],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "name": "keyword.control.statemachine-transition",
+      "match": ""
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.statemachine-transition",
+          "begin": "/\\*",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.statemachine-transition"
+            }
+          },
+          "end": "\\*/",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.statemachine-transition"
+            }
+          }
+        },
+        {
+          "begin": "//",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.whitespace.comment.leading.statemachine-transition"
+            }
+          },
+          "end": "(?=$)",
+          "name": "comment.line.statemachine-transition"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+    "projectName": "StatemachineDsl",
+    "languages": [
+        {
+            "id": "statemachine-declarations",
+            "grammar": "../ls/grammars/declarations.langium",
+            "fileExtensions": [".sm_declarations"],
+            "textMate": {
+                "out": "../syntaxes/statemachine-declarations.tmLanguage.json"
+            }
+        },
+        {
+            "id": "statemachine-transition",
+            "grammar": "../ls/grammars/transition.langium",
+            "fileExtensions": [".sm_transition"],
+            "textMate": {
+                "out": "../syntaxes/statemachine-transition.tmLanguage.json"
+            }
+        }
+    ],
+    "out": "../ls/generated"
+}

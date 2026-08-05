@@ -31,10 +31,23 @@ If the same edge references an out-of-scope variable or an invalid property, Lan
 ## Repository structure
 
 - `framework` - reusable integration code published as the npm package `glsp-langium-integration`.
-- `example` - Workflow-based GLSP example that uses the framework.
-- `example/workflow-glsp` - client-side diagram code, Monaco integration, Langium grammar, worker setup, and graph-derived scoping.
-- `example/workflow-server` - GLSP server, model extensions, operation handlers, and persistence of condition edits.
-- `example/workspace/coffee.wf` - example workflow model used for the demo.
+- `example/workflow` - Workflow-based GLSP example that uses the framework.
+- `example/workflow/workflow-glsp` - client-side diagram code, Monaco integration, Langium grammar, worker setup, and graph-derived scoping.
+- `example/workflow/workflow-server` - GLSP server, model extensions, operation handlers, and persistence of condition edits.
+- `example/workflow/workspace/coffee.wf` - example workflow model used for the demo.
+- `example/statemachine` - Statemachine example based on the official Langium statemachine language (see below).
+
+## Example gallery
+
+The two examples demonstrate different integration styles.
+
+| | [Workflow](example/workflow) | [Statemachine](example/statemachine) |
+| --- | --- | --- |
+| Textual sub-languages | 1 (condition expressions) | 2 (declarations + transition labels) |
+| Referenced elements | Graphical task nodes | Another grammar-controlled textual element |
+| Scoping style | Position-dependent (upstream tasks only) | Global (all declared events/commands) |
+| Editor style | Single-line labels on edges | Multi-line declarations block + single-line edge labels |
+| Origin of the language | GLSP workflow example, extended with conditions | Official Langium statemachine example, split into graphical structure and textual content
 
 ## Key implementation files
 
@@ -43,11 +56,11 @@ If the same edge references an out-of-scope variable or an invalid property, Lan
 - `framework/src/glsp/validation/langium-scoping-information.handler.ts` forwards graph-derived scoping information to the Langium worker.
 - `framework/src/glsp/validation/langium-validation.handler.ts` converts Langium diagnostics into GLSP markers.
 - `framework/src/langium/worker/start.ts` starts the Langium language server and the GLSP communication listeners.
-- `example/workflow-glsp/src/langium/ls/grammars/conditional_edge.langium` defines the embedded condition language.
-- `example/workflow-glsp/src/langium-integration/variable-scope.ts` computes which variables are visible to each conditional edge.
-- `example/workflow-glsp/src/langium/ls/workflow-dsl-references.ts` exposes graph elements as Langium external references.
-- `example/workflow-glsp/src/langium-integration/monaco-submit.service.ts` submits edited condition text back to GLSP.
-- `example/workflow-server/src/conditionedit/apply-condition-edit-handler.ts` persists condition edits in the GLSP source model.
+- `example/workflow/workflow-glsp/src/langium/ls/grammars/conditional_edge.langium` defines the embedded condition language.
+- `example/workflow/workflow-glsp/src/langium-integration/variable-scope.ts` computes which variables are visible to each conditional edge.
+- `example/workflow/workflow-glsp/src/langium/ls/workflow-dsl-references.ts` exposes graph elements as Langium external references.
+- `example/workflow/workflow-glsp/src/langium-integration/monaco-submit.service.ts` submits edited condition text back to GLSP.
+- `example/workflow/workflow-server/src/conditionedit/apply-condition-edit-handler.ts` persists condition edits in the GLSP source model.
 
 ## Authors
 
@@ -66,7 +79,7 @@ The example is an Eclipse Theia application, so the [Theia development prerequis
 From the repository root:
 
 ```bash
-cd example
+cd example/workflow
 yarn
 yarn build
 yarn start
@@ -77,7 +90,7 @@ Open `http://localhost:3000` and load `coffee.wf` from the workspace in the Work
 For debugging with an external GLSP server:
 
 ```bash
-cd example
+cd example/workflow
 yarn start:server
 yarn start:external
 ```
@@ -85,7 +98,7 @@ yarn start:external
 To work in watch mode:
 
 ```bash
-cd example
+cd example/workflow
 yarn watch
 ```
 

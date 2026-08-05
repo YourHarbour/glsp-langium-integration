@@ -1,0 +1,98 @@
+/********************************************************************************
+ * Copyright (c) 2019-2026 EclipseSource and others.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v. 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0.
+ *
+ * This Source Code may also be made available under the following Secondary
+ * Licenses when the conditions for such availability set forth in the Eclipse
+ * Public License v. 2.0 are satisfied: GNU General Public License, version 2
+ * with the GNU Classpath Exception which is available at
+ * https://www.gnu.org/software/classpath/license.html.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+ ********************************************************************************/
+
+.sprotty-graph {
+    font-size: 15pt;
+    border: none;
+    height: 100%;
+}
+
+.sprotty-text {
+    font-size: 12pt;
+    text-anchor: middle;
+}
+
+.sprotty-node {
+    stroke-width: 0;
+    font-weight: bold;
+}
+
+.sprotty-label {
+    stroke-width: 0;
+    fill: #000;
+    font-weight: inherit;
+    text-align: inherit;
+    font-size: 100%;
+}
+
+.sprotty-label.heading {
+    font-weight: normal;
+    font-size: 0.7em;
+    fill: #f0f3f8;
+}
+
+.sprotty-comp {
+    stroke: transparent;
+    fill: transparent;
+}
+
+.label-edit input {
+    margin-top: -3px;
+    margin-left: -3px;
+}
+
+/* ------------------------------------------------------------------------ */
+/* States                                                                   */
+/* ------------------------------------------------------------------------ */
+
+.state > .sprotty-node {
+    fill: #5b9fa8;
+}
+
+/* The initial state is marked with an accented border */
+.state.initial > .sprotty-node {
+    stroke: #fdeba7;
+    stroke-width: 2;
+}
+
+/* ------------------------------------------------------------------------ */
+/* Declarations element with embedded multi-line Monaco editor              */
+/* ------------------------------------------------------------------------ */
+
+.declarations > .sprotty-node {
+    fill: #3c3f41;
+    stroke: #5c87bd;
+    stroke-width: 1;
+}
+
+/* ------------------------------------------------------------------------ */
+/* Transition edge with embedded Monaco editor                              */
+/* ------------------------------------------------------------------------ */
+
+.sprotty-edge.transition:not(.selected),
+.sprotty-edge.transition:not(.selected) .arrow {
+    stroke: #4a7d4a;
+}
+
+.sprotty-edge.transition:not(.selected) .arrow {
+    fill: #4a7d4a;
+}
+
+/* The monaco label is rendered into a foreignObject; give it a subtle backdrop */
+.label\:monaco,
+.label\:monaco-declarations {
+    overflow: visible;
+}

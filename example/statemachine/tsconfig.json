@@ -1,0 +1,18 @@
+{
+  "extends": "@eclipse-glsp/ts-config",
+  "include": [],
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    {
+      "path": "./statemachine-server"
+    },
+    {
+      "path": "./statemachine-glsp"
+    },
+    {
+      "path": "./statemachine-theia"
+    }
+  ]
+}
