@@ -54,7 +54,7 @@ The two examples demonstrate different integration styles.
 | Referenced elements | Graphical task nodes | Another grammar-controlled textual element |
 | Scoping style | Position-dependent (upstream tasks only) | Global (all declared events/commands) |
 | Editor style | Single-line labels on edges | Multi-line declarations block + single-line edge labels |
-| Origin of the language | GLSP workflow example, extended with conditions | Official Langium statemachine example, split into graphical structure and textual content
+| Origin of the language | GLSP workflow example, extended with conditions | Inspired by Langium statemachine example, split into graphical structure and textual content
 
 ## Key implementation files
 
